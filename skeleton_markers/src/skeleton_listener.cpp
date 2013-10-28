@@ -5,13 +5,28 @@
 #include <XnOpenNI.h>
 #include <math.h>
 #include <std_msgs/String.h>
+#include <std_msgs/Bool.h>
+
+String GestureListenerCallback(const std_msgs::String::ConstPtr& msg);
+
+static String currentString;
+ros::Publisher gestureFound;
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "my_tf_listener");
   ros::NodeHandle node;
 	
-  ros::Publisher whattosay = 
-       node.advertise<std_msgs::String>("/audio_say", 1);
+  gestureFound = 
+       node.advertise<std_msgs::Bool>("whattosay", 1);
+
+  ros::init(argc, argv, "GestureListener");
+  ros::NodeHandle n;
+  ros::Subscriber sub = n.subscribe("currentGesture", 1000, GestureListenerCallback);
+
+  
+
+
+
 
 	tf::TransformListener listener_head;
 	tf::TransformListener listener_RH;
@@ -188,3 +203,44 @@ int main(int argc, char** argv){
   }
   return 0;
 };
+
+void GestureListenerCallback(const std_msgs::String::ConstPtr& msg){
+  currentString = msg->data.c_str();
+  String A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
+  String B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
+  String C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
+  String D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
+  String E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
+  String F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
+  String[] arrayofGes[6] = {A, B, C, D, E, F};
+
+  bool found = false;
+  int counter = 0;
+  while(!found && counter <6){
+    if(std::find(std::begin(arrayofGes[counter]), std::end(arrayofGes[counter]), currentGesture) != std::end(arrayofGes[counter])){
+      switch(counter){
+        case 0:
+          method0();
+          break;
+        case 1:
+          method1();
+          break;
+        case 2:
+          method2();
+          break;
+        case 3:
+          method3();
+          break;
+        case 4:
+          method4();
+          break;
+        case 5:
+           method5();
+           break;
+      }
+      counter++;
+
+      }
+  
+  }
+}

@@ -11,13 +11,19 @@ String GestureListenerCallback(const std_msgs::String::ConstPtr& msg);
 
 static String currentString;
 ros::Publisher gestureFound;
+void method0(String[] arr, String currentString);
+void method1(String[] arr, String currentString);
+void method2(String[] arr, String currentString);
+void method3(String[] arr, String currentString);
+void method4(String[] arr, String currentString);
+void method5(String[] arr, String currentString);
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "my_tf_listener");
   ros::NodeHandle node;
 	
   gestureFound = 
-       node.advertise<std_msgs::Bool>("whattosay", 1);
+       node.advertise<std_msgs::bool>("whattosay", 1);
 
   ros::init(argc, argv, "GestureListener");
   ros::NodeHandle n;
@@ -216,31 +222,168 @@ void GestureListenerCallback(const std_msgs::String::ConstPtr& msg){
 
   bool found = false;
   int counter = 0;
+
   while(!found && counter <6){
     if(std::find(std::begin(arrayofGes[counter]), std::end(arrayofGes[counter]), currentGesture) != std::end(arrayofGes[counter])){
       switch(counter){
         case 0:
-          method0();
+          method0(A, currentString);
+          found = true;
           break;
         case 1:
-          method1();
+          method1(B, currentString);
+          found = true;
           break;
         case 2:
-          method2();
+          method2(C, currentString);
+          found = true;
           break;
         case 3:
-          method3();
+          method3(D, currentString);
+          found = true;
           break;
         case 4:
-          method4();
+          method4(E, currentString);
+          found = true;
           break;
         case 5:
-           method5();
-           break;
+          method5(F, currentString);
+          found = true;
+          break;
       }
       counter++;
-
       }
   
   }
+
+
 }
+
+
+void method0(String[] arr, String currentString){ //uses motion
+
+  switch(currentString){
+    case arr[0]: 
+
+  }
+
+}
+
+void method1(String[] arr, String currentString){ //also uses motion
+
+}
+
+void method2(String[] arr, String currentString){
+  tf::TransformListener listener_head;
+  tf::TransformListener listener_right_hand;
+  tf::TransformListener listener_left_hand;
+  tf::TransformListener listener_right_elbow;
+  tf::TransformListener listener_left_elbow;
+  static tf::StampedTransform transform_head;
+  static tf::StampedTransform transform_RH;
+  static tf::StampedTransform transform_LH;
+  static tf::StampedTransform transform_RE;
+  static tf::StampedTransform transform_LE;
+
+  switch(currentString){
+    case arr[0]: //right hand pat head
+      if(fabs(transform_head.getOrigin().z()-transform_LH.getOrigin().z()) < .15 == 1){
+        if(fabs(transform_head.getOrigin().y() - transform_LH.getOrigin().y()) < .1 == 1){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[1]: //pat head LH
+      if(fabs(transform_head.getOrigin().z()-transform_RH.getOrigin().z()) < .15 == 1){
+        if(fabs(transform_head.getOrigin().y() - transform_RH.getOrigin().y()) < .1 == 1){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[2]: //touch RE
+      if(fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .05 == 1){
+        if(fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .05 == 1){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[3]: //touch LE
+      if(fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .05 == 1){
+        if(fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .05 == 1){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[4]: //touch LE
+      if((fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+  }
+
+
+}
+
+void method3(String[] arr, String currentString){
+
+  tf::TransformListener listener_torso;
+  tf::TransformListener listener_right_hand;
+  tf::TransformListener listener_left_hand;
+  tf::TransformListener listener_right_knee;
+  tf::TransformListener listener_left_knee;
+  static tf::StampedTransform transform_head;
+  static tf::StampedTransform transform_RH;
+  static tf::StampedTransform transform_LH;
+  static tf::StampedTransform transform_RK;
+  static tf::StampedTransform transform_LK;
+
+  switch(currentString){
+    case arr[0]: //touch RK with RH
+      if(fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1){
+        if(fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[1]: //touch LK with LH
+      if(fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1){
+        if(fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[2]: //touch BK
+      if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[3]: //touch OK
+      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[4]: //turn around
+      if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+  }
+}
+
+

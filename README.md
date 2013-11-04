@@ -21,5 +21,8 @@ Upon successfully running these two nodes, if you want the gestures that are rec
 
  
 
+*UPDATE: The second part of our project for gesture recognition is currently being implemented. As soon as it is done, we will provide instrucitons on how to use the Simon Says game.
+
+
 
 BWI project for Freshman Research Initiative 

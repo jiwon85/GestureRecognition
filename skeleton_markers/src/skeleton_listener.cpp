@@ -11,12 +11,48 @@ String GestureListenerCallback(const std_msgs::String::ConstPtr& msg);
 
 static String currentString;
 ros::Publisher gestureFound;
-void method0(String[] arr, String currentString);
-void method1(String[] arr, String currentString);
-void method2(String[] arr, String currentString);
-void method3(String[] arr, String currentString);
-void method4(String[] arr, String currentString);
-void method5(String[] arr, String currentString);
+
+
+
+tf::TransformListener listener_torso;
+tf::TransformListener listener_right_knee;
+tf::TransformListener listener_left_knee;
+tf::TransformListener listener_head;
+tf::TransformListener listener_right_hand;
+tf::TransformListener listener_left_hand;
+tf::TransformListener listener_right_hip;
+tf::TransformListener listener_left_hip;
+tf::TransformListener listener_right_elbow;
+tf::TransformListener listener_left_elbow;
+tf::TransformListener listener_right_shoulder;
+tf::TransformListener listener_left_shoulder;
+tf::TransformListener listener_right_foot;
+tf::TransformListener listener_left_foot;
+
+  
+
+static tf::StampedTransform transform_torso;
+static tf::StampedTransform transform_RK;
+static tf::StampedTransform transform_LK;
+static tf::StampedTransform transform_head;
+static tf::StampedTransform transform_RH;
+static tf::StampedTransform transform_LH;
+static tf::StampedTransform transform_RHip;
+static tf::StampedTransform transform_LHip;
+static tf::StampedTransform transform_RE;
+static tf::StampedTransform transform_LE;
+static tf::StampedTransform transform_RS;
+static tf::StampedTransform transform_LS;
+static tf::StampedTransform transform_RF;
+static tf::StampedTransform transform_LF;
+
+
+void methodA(String[] arr, String currentString);
+void methodB(String[] arr, String currentString);
+void methodC(String[] arr, String currentString);
+void methodD(String[] arr, String currentString);
+void methodE(String[] arr, String currentString);
+void methodF(String[] arr, String currentString);
 
 int main(int argc, char** argv){
   ros::init(argc, argv, "my_tf_listener");
@@ -227,27 +263,27 @@ void GestureListenerCallback(const std_msgs::String::ConstPtr& msg){
     if(std::find(std::begin(arrayofGes[counter]), std::end(arrayofGes[counter]), currentGesture) != std::end(arrayofGes[counter])){
       switch(counter){
         case 0:
-          method0(A, currentString);
+          methodA(A, currentString);
           found = true;
           break;
         case 1:
-          method1(B, currentString);
+          methodB(B, currentString);
           found = true;
           break;
         case 2:
-          method2(C, currentString);
+          methodC(C, currentString);
           found = true;
           break;
         case 3:
-          method3(D, currentString);
+          methodD(D, currentString);
           found = true;
           break;
         case 4:
-          method4(E, currentString);
+          methodE(E, currentString);
           found = true;
           break;
         case 5:
-          method5(F, currentString);
+          methodF(F, currentString);
           found = true;
           break;
       }
@@ -260,7 +296,7 @@ void GestureListenerCallback(const std_msgs::String::ConstPtr& msg){
 }
 
 
-void method0(String[] arr, String currentString){ //uses motion
+void methodA(String[] arr, String currentString){ //uses motion
 
   switch(currentString){
     case arr[0]: 
@@ -269,21 +305,11 @@ void method0(String[] arr, String currentString){ //uses motion
 
 }
 
-void method1(String[] arr, String currentString){ //also uses motion
+void methodB(String[] arr, String currentString){ //also uses motion
 
 }
 
-void method2(String[] arr, String currentString){
-  tf::TransformListener listener_head;
-  tf::TransformListener listener_right_hand;
-  tf::TransformListener listener_left_hand;
-  tf::TransformListener listener_right_elbow;
-  tf::TransformListener listener_left_elbow;
-  static tf::StampedTransform transform_head;
-  static tf::StampedTransform transform_RH;
-  static tf::StampedTransform transform_LH;
-  static tf::StampedTransform transform_RE;
-  static tf::StampedTransform transform_LE;
+void methodC(String[] arr, String currentString){
 
   switch(currentString){
     case arr[0]: //right hand pat head
@@ -331,22 +357,11 @@ void method2(String[] arr, String currentString){
 
 }
 
-void method3(String[] arr, String currentString){
-
-  tf::TransformListener listener_torso;
-  tf::TransformListener listener_right_hand;
-  tf::TransformListener listener_left_hand;
-  tf::TransformListener listener_right_knee;
-  tf::TransformListener listener_left_knee;
-  static tf::StampedTransform transform_head;
-  static tf::StampedTransform transform_RH;
-  static tf::StampedTransform transform_LH;
-  static tf::StampedTransform transform_RK;
-  static tf::StampedTransform transform_LK;
+void methodD(String[] arr, String currentString){
 
   switch(currentString){
     case arr[0]: //touch RK with RH
-      if(fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1){
+      if(fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1){ //take care of other hand
         if(fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1){
           gestureFound.publish(true);
         }
@@ -354,7 +369,7 @@ void method3(String[] arr, String currentString){
       gestureFound.publish(false);
       break;
     case arr[1]: //touch LK with LH
-      if(fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1){
+      if(fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1){ //take care of other hand
         if(fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1){
           gestureFound.publish(true);
         }
@@ -386,4 +401,87 @@ void method3(String[] arr, String currentString){
   }
 }
 
+void methodE(String[] arr, String currentString){
 
+  switch(currentString){
+    case arr[0]: //raise right hand
+      if(transform_LH.getOrigin().z()>transform_head.getOrigin().z() == 1){
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[1]: //raise left hand
+      if(transform_RH.getOrigin().z()>transform_head.getOrigin().z() == 1){
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[2]: //raise both hands
+      if((transform_LH.getOrigin().z()>transform_head.getOrigin().z() == 1) && (transform_RH.getOrigin().z()>transform_head.getOrigin().z() == 1)){
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[3]: //hands on hips
+      if((fabs(transform_LH.getOrigin().z()-transform_LHip.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RHip.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LHip.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RHip.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[4]: //hands on shoulders
+      if((fabs(transform_RH.getOrigin().z()-transform_LS.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RS.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_RH.getOrigin().y()-transform_LS.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RS.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }//or cross your hands on shoulders
+      else if((fabs(transform_LH.getOrigin().z()-transform_LS.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RS.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LS.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RS.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+  }
+}
+
+void methodF(String[] arr, String currentString){
+
+  switch(currentString){
+    case arr[0]: //stand on Right Foot
+      if(transform_RF.getOrigin().z() > transform_LF.getOrigin().z() && transform_RF.getOrigin().z() < transform_LK.getOrigin().z()){ //take care of other hand
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[1]: //stand on left foot
+      if(transform_LF.getOrigin().z() > transform_RF.getOrigin().z() && transform_LF.getOrigin().z() < transform_RK.getOrigin().z()){ //take care of other hand
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[2]: //touch BK
+      if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[3]: //touch OK
+      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+          gestureFound.publish(true);
+        }
+      }
+      gestureFound.publish(false);
+      break;
+    case arr[4]: //turn around
+      if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
+        gestureFound.publish(true);
+      }
+      gestureFound.publish(false);
+      break;
+  }
+}

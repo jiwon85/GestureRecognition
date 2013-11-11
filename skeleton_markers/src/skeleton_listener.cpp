@@ -6,8 +6,9 @@
 #include <math.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
+#include "skeleton_markers/gestureFound.h"
 
-String GestureListenerCallback(const std_msgs::String::ConstPtr& msg);
+Bool gestureDetecter();
 
 static String currentString;
 ros::Publisher gestureFound;
@@ -54,16 +55,33 @@ void methodD(String[] arr, String currentString);
 void methodE(String[] arr, String currentString);
 void methodF(String[] arr, String currentString);
 
+bool findTheGesture(skeleton_markers::skeleton_listener::Request  &req,
+         skeleton_listener::gestureFound::Response &res)
+{
+
+  res.flag = gestureDetecter(req.gesture);
+  //figure out time response here;
+  //if time > 3 return false, otherwise return gesture Detecter (req.gesture);
+  // ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
+  // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+  return true;
+}
+
+
 int main(int argc, char** argv){
-  ros::init(argc, argv, "my_tf_listener");
+  ros::init(argc, argv, "skeleton_listener");
   ros::NodeHandle node;
 	
-  gestureFound = 
-       node.advertise<std_msgs::bool>("whattosay", 1);
+  ros::ServiceServer service = n.advertiseService("skeletonlistener", findTheGesture);
+  // gestureFound = 
+  //      node.advertise<std_msgs::bool>("whattosay", 1);
 
-  ros::init(argc, argv, "GestureListener");
-  ros::NodeHandle n;
-  ros::Subscriber sub = n.subscribe("currentGesture", 1000, GestureListenerCallback);
+
+
+
+  // ros::init(argc, argv, "GestureListener");
+  // ros::NodeHandle n;
+  // ros::Subscriber sub = n.subscribe("currentGesture", 1000, GestureListenerCallback);
 
   
 
@@ -238,7 +256,7 @@ int main(int argc, char** argv){
 	}
 
 
-    ros::spinOnce();
+    ros::spin();
 	count++;
     rate.sleep();
 	
@@ -246,8 +264,7 @@ int main(int argc, char** argv){
   return 0;
 };
 
-void GestureListenerCallback(const std_msgs::String::ConstPtr& msg){
-  currentString = msg->data.c_str();
+void GestureListenerCallback(){
   String A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
   String B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
   String C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};

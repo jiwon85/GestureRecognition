@@ -1,10 +1,26 @@
 #!/usr/bin/env python
+import roslib; roslib.load_manifest('skeleton_markers')
+import sys
 import rospy
+from skeleton_markers.srv import *
 from random import randint
 from std_msgs.msg import String
 from std_msgs.msg import Bool
 from datetime import datetime
 
+
+def simonsays(x, y):
+    rospy.wait_for_service('skelton_listener')
+    try:
+        skelton_listener = rospy.ServiceProxy('skelton_listener', skeltonlistener)
+        resp1 = skelton_listener() #create new method to return random gesture and put it into the parameter.
+        return resp1.sum
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
+
+def usage():
+    return "%s [x y]"%sys.argv[0]
 
 def callback(data):
     if(data.data):
@@ -56,4 +72,13 @@ def listener():
 
 
 if __name__ == '__main__':
-    listener()
+
+    if len(sys.argv) == 3:
+        x = int(sys.argv[1])
+        y = int(sys.argv[2])
+    else:
+        print usage()
+        sys.exit(1)
+    print "Requesting %s+%s"%(x, y)
+    print "%s + %s = %s"%(x, y, add_two_ints_client(x, y))
+    #listener()

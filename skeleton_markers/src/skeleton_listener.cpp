@@ -8,10 +8,8 @@
 #include <std_msgs/Bool.h>
 #include "skeleton_markers/gestureFound.h"
 
-Bool gestureDetecter();
+std_msgs::bool gestureDetecter(gesture, randomArr, randomGes);
 
-static String currentString;
-ros::Publisher gestureFound;
 
 
 
@@ -48,12 +46,12 @@ static tf::StampedTransform transform_RF;
 static tf::StampedTransform transform_LF;
 
 
-void methodA(String[] arr, String currentString);
-void methodB(String[] arr, String currentString);
-void methodC(String[] arr, String currentString);
-void methodD(String[] arr, String currentString);
-void methodE(String[] arr, String currentString);
-void methodF(String[] arr, String currentString);
+void methodA(std_msgs::string[] arr, int randomGes);
+void methodB(std_msgs::string[] arr, int randomGes);
+void methodC(std_msgs::string[] arr, int randomGes);
+void methodD(std_msgs::string[] arr, int randomGes);
+void methodE(std_msgs::string[] arr, int randomGes);
+void methodF(std_msgs::string[] arr, int randomGes);
 
 bool findTheGesture(skeleton_markers::skeleton_listener::Request  &req,
          skeleton_listener::gestureFound::Response &res)
@@ -105,9 +103,9 @@ int main(int argc, char** argv){
 	//static tf::StampedTransform transform_neck;
 	//static tf::StampedTransform transform_Lknee;
 	
-	bool arr[4] = {false};
+	bool 4 = {false};
 	for(int i=0; i<4; i++){
-		arr[i] = false;
+		i = false;
 	}
     
 	std_msgs::String msg;
@@ -120,15 +118,14 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
     	ros::Rate rate(5.0);
     	
     	
-    while (node.ok()){
-	count = 0;
+  while (node.ok()){
         
         try{
             listener_head.lookupTransform("/openni_depth_frame", "/head_1",
                                ros::Time(0), transform_head);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         
         try{
@@ -136,7 +133,7 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
                                ros::Time(0), transform_RH);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         
         try{
@@ -144,7 +141,7 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
                                ros::Time(0), transform_LH);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         
         try{
@@ -152,23 +149,23 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
                                ros::Time(0), transform_torso);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
-			
+      
         try{
             listener_right_elbow.lookupTransform("/openni_depth_frame", "/right_elbow_1",
                                 ros::Time(0), transform_RE);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
-        }	
+             ROS_ERROR("%s",ex.what());
+        } 
 
         try{
             listener_left_elbow.lookupTransform("/openni_depth_frame", "/left_elbow_1",
                                ros::Time(0), transform_LE);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         
         try{
@@ -176,65 +173,65 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
                                ros::Time(0), transform_RHip);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_left_hip.lookupTransform("/openni_depth_frame", "/left_hip_1",
                                ros::Time(0), transform_Lhip);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_right_knee.lookupTransform("/openni_depth_frame", "/right_knee_1",
                                ros::Time(0), transform_RK);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_left_knee.lookupTransform("/openni_depth_frame", "/left_knee_1",
                                ros::Time(0), transform_LK);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_right_foot.lookupTransform("/openni_depth_frame", "/right_foot_1",
                                ros::Time(0), transform_RF);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_left_foot.lookupTransform("/openni_depth_frame", "/left_foot_1",
                                ros::Time(0), transform_LF);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_right_shoulder.lookupTransform("/openni_depth_frame", "/right_shoulder_1",
                                ros::Time(0), transform_RS);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
+             ROS_ERROR("%s",ex.what());
         }
         try{
             listener_left_shoulder.lookupTransform("/openni_depth_frame", "/left_shoulder_1",
                                ros::Time(0), transform_LS);
         }
         catch (tf::TransformException ex){
-     				 ROS_ERROR("%s",ex.what());
-        }	
+             ROS_ERROR("%s",ex.what());
+        } 
 	
-	String A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
-  String B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
-  String C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
-  String D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
-  String E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
-  String F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
-  String[] arrayofGes[6] = {A, B, C, D, E, F};
+	std_msgs::string A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
+  std_msgs::string B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
+  std_msgs::string C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
+  std_msgs::string D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
+  std_msgs::string E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
+  std_msgs::string F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
+  std_msgs::string[] arrayofGes[6] = {A, B, C, D, E, F};
 
   std_msgs::bool found = false;
   int counter = 0;
@@ -258,7 +255,7 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
         case 5:
           found = methodF(F, randomGes);
           break;
-      }
+  }
    
   
  	if(found){
@@ -266,35 +263,35 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
  	}
   
   /*
-	std::stringstream ss;
+	std_msgs::stringstream ss;
     if((transform_LH.getOrigin().z() > transform_head.getOrigin().z()) == 1){
         std::cout<<"right hand high five!"<<std::endl;
-        if(arr[0] == false){
+        if(0 == false){
             ss << "right hand high five";
     		msg.data = ss.str();
             current = count;
             whattosay.publish(msg);
             ROS_INFO("%s", msg.data.c_str());
                 for(int i=0; i<4; i++){
-                    arr[i] = false;
+                    i = false;
                 }
-            arr[0] = true;
+            0 = true;
         }
     }
 	
 
     if((transform_RH.getOrigin().z()>transform_head.getOrigin().z()) == 1){
         std::cout<<"left hand high five!"<<std::endl;
-        if(arr[1] == false){
+        if(1 == false){
             ss << "left hand high five";
             msg.data = ss.str();
             current = count;
             whattosay.publish(msg);
             ROS_INFO("%s", msg.data.c_str());
             for(int i=0; i<4; i++){
-                arr[i] = false;
+                i = false;
             }
-            arr[1] = true;
+            1 = true;
         }
 	}
 
@@ -309,16 +306,16 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
 			//std::cout<<"Left Hand lower than torso"<<std::endl;
 			if(fabs(transform_torso.getOrigin().y()-transform_LH.getOrigin().y()) < .1 == 1){
 				std::cout<<"national anthem!"<<std::endl;
-				if(arr[2] == false){
+				if(2 == false){
 					ss << "god bless america";
                     msg.data = ss.str();
 					current = count;
 					whattosay.publish(msg);
 					ROS_INFO("%s", msg.data.c_str());
 					for(int i=0; i<4; i++){
-						arr[i] = false;
+						i = false;
 					}
-					arr[2] = true;
+					2 = true;
 				}
 			}
 		}
@@ -331,16 +328,16 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
 			//std::cout<<"hand heights yoga"<<std::endl;
 			if(fabs(transform_LH.getOrigin().y()-transform_RH.getOrigin().y()) <.1 == 1){
 				std::cout<<"kung foo"<<std::endl;
-				if(arr[3] == false){
+				if(3 == false){
 					ss << "kung foo";
                     msg.data = ss.str();
 					current = count;
 					whattosay.publish(msg);
 					ROS_INFO("%s", msg.data.c_str());
 					for(int i=0; i<4; i++){
-						arr[i] = false;
+						i = false;
 					}
-					arr[3] = true;
+					3 = true;
 				}
 			} 		
 		}  
@@ -358,192 +355,173 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
 
 
 
-void methodA(String[] arr, String currentString){ //uses motion
+std_msgs::bool methodA(std_msgs::string[] arr, int randomGes){ //uses motion
 
-  switch(currentString){
-    case arr[0]: 
+  switch(randomGes){
+    case 0: 
 
   }
 
 }
 
-void methodB(String[] arr, String currentString){ //also uses motion
+std_msgs::bool methodB(std_msgs::string[] arr, int randomGes){ //also uses motion
 
 }
 
-void methodC(String[] arr, String currentString){
+std_msgs::bool methodC(std_msgs::string[] arr, int randomGes){
 	
-  switch(currentString){
-    case arr[0]: //right hand pat head
+  switch(randomGes){
+    case 0: //right hand pat head
       if(fabs(transform_head.getOrigin().z()-transform_LH.getOrigin().z()) < .15 == 1){
         if(fabs(transform_head.getOrigin().y() - transform_LH.getOrigin().y()) < .1 == 1){
           return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[1]: //pat head LH
+    case 1: //pat head LH
       if(fabs(transform_head.getOrigin().z()-transform_RH.getOrigin().z()) < .15 == 1){
         if(fabs(transform_head.getOrigin().y() - transform_RH.getOrigin().y()) < .1 == 1){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[2]: //touch RE
+    case 2: //touch RE
       if(fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .05 == 1){
         if(fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .05 == 1){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[3]: //touch LE
+    case 3: //touch LE
       if(fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .05 == 1){
         if(fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .05 == 1){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[4]: //touch LE
+    case 4: //touch LE
       if((fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
   }
+  return false;
 
 
 }
 
-void methodD(String[] arr, String currentString){
+std_msgs::bool methodD(std_msgs::string[] arr, int randomGes){
 
-  switch(currentString){
-    case arr[0]: //touch RK with RH
+  switch(randomGes){
+    case 0: //touch RK with RH
       if(fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1){ //take care of other hand
         if(fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[1]: //touch LK with LH
+    case 1: //touch LK with LH
       if(fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1){ //take care of other hand
         if(fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[2]: //touch BK
+    case 2: //touch BK
       if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[3]: //touch OK
+    case 3: //touch OK
       if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[4]: //turn around
+    case 4: //turn around
       if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
   }
 }
 
-void methodE(String[] arr, String currentString){
+std_msgs::bool methodE(std_msgs::string[] arr, int randomGes){
 
-  switch(currentString){
-    case arr[0]: //raise right hand
+  switch(randomGes){
+    case 0: //raise right hand
       if(transform_LH.getOrigin().z()>transform_head.getOrigin().z() == 1){
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
-    case arr[1]: //raise left hand
+    case 1: //raise left hand
       if(transform_RH.getOrigin().z()>transform_head.getOrigin().z() == 1){
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
-    case arr[2]: //raise both hands
+    case 2: //raise both hands
       if((transform_LH.getOrigin().z()>transform_head.getOrigin().z() == 1) && (transform_RH.getOrigin().z()>transform_head.getOrigin().z() == 1)){
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
-    case arr[3]: //hands on hips
+    case 3: //hands on hips
       if((fabs(transform_LH.getOrigin().z()-transform_LHip.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RHip.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_LH.getOrigin().y()-transform_LHip.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RHip.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[4]: //hands on shoulders
+    case 4: //hands on shoulders
       if((fabs(transform_RH.getOrigin().z()-transform_LS.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RS.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_RH.getOrigin().y()-transform_LS.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RS.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }//or cross your hands on shoulders
       else if((fabs(transform_LH.getOrigin().z()-transform_LS.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RS.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_LH.getOrigin().y()-transform_LS.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RS.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
   }
 }
 
-void methodF(String[] arr, String currentString){
+std_msgs::bool methodF(std_msgs::string[] arr, int randomGes){
 
-  switch(currentString){
-    case arr[0]: //stand on Right Foot
+  switch(randomGes){
+    case 0: //stand on Right Foot
       if(transform_RF.getOrigin().z() > transform_LF.getOrigin().z() && transform_RF.getOrigin().z() < transform_LK.getOrigin().z()){ //take care of other hand
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
-    case arr[1]: //stand on left foot
+    case 1: //stand on left foot
       if(transform_LF.getOrigin().z() > transform_RF.getOrigin().z() && transform_LF.getOrigin().z() < transform_RK.getOrigin().z()){ //take care of other hand
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
-    case arr[2]: //touch BK
+    case 2: //touch BK
       if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[3]: //touch OK
+    case 3: //touch OK
       if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
         if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          gestureFound.publish(true);
+          return true;
         }
       }
-      gestureFound.publish(false);
       break;
-    case arr[4]: //turn around
+    case 4: //turn around
       if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
-        gestureFound.publish(true);
+        return true;
       }
-      gestureFound.publish(false);
       break;
   }
 }

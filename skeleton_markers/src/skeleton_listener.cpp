@@ -59,11 +59,11 @@ bool findTheGesture(skeleton_markers::skeleton_listener::Request  &req,
          skeleton_listener::gestureFound::Response &res)
 {
 
-  res.flag = gestureDetecter(req.gesture);
+  res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
   //figure out time response here;
   //if time > 3 return false, otherwise return gesture Detecter (req.gesture);
   // ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-  // ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+  ROS_INFO("sending back response: [%s]", res.flag);
   return true;
 }
 
@@ -88,7 +88,7 @@ int main(int argc, char** argv){
 
 
 
-	tf::TransformListener listener_head;
+	/*tf::TransformListener listener_head;
 	tf::TransformListener listener_RH;
 	tf::TransformListener listener_LH;	
 	tf::TransformListener listener_righthip;
@@ -98,12 +98,12 @@ int main(int argc, char** argv){
 	tf::TransformListener listener_Lknee;
 	static tf::StampedTransform transform_head;
 	static tf::StampedTransform transform_RH;
-	static tf::StampedTransform transform_LH;
-	static tf::StampedTransform transform_righthip;
-	static tf::StampedTransform transform_lefthip;
-	static tf::StampedTransform transform_torso;
-	static tf::StampedTransform transform_neck;
-	static tf::StampedTransform transform_Lknee;
+	//static tf::StampedTransform transform_LH;
+	//static tf::StampedTransform transform_righthip;
+	//static tf::StampedTransform transform_lefthip;
+	//static tf::StampedTransform transform_torso;
+	//static tf::StampedTransform transform_neck;
+	//static tf::StampedTransform transform_Lknee;
 	
 	bool arr[4] = {false};
 	for(int i=0; i<4; i++){
@@ -112,14 +112,19 @@ int main(int argc, char** argv){
     
 	std_msgs::String msg;
 	int count = 0;
-	int current = 0;
-    ros::Rate rate(5.0);
-    
+	int current = 0; */
+	return 0;
+}
+
+std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
+    	ros::Rate rate(5.0);
+    	
+    	
     while (node.ok()){
 	count = 0;
         
         try{
-            listener_RH.lookupTransform("/openni_depth_frame", "/head_1",
+            listener_head.lookupTransform("/openni_depth_frame", "/head_1",
                                ros::Time(0), transform_head);
         }
         catch (tf::TransformException ex){
@@ -127,7 +132,7 @@ int main(int argc, char** argv){
         }
         
         try{
-            listener_RH.lookupTransform("/openni_depth_frame", "/right_hand_1",
+            listener_right_hand.lookupTransform("/openni_depth_frame", "/right_hand_1",
                                ros::Time(0), transform_RH);
         }
         catch (tf::TransformException ex){
@@ -135,7 +140,7 @@ int main(int argc, char** argv){
         }
         
         try{
-            listener_LH.lookupTransform("/openni_depth_frame", "/left_hand_1",
+            listener_left_hand.lookupTransform("/openni_depth_frame", "/left_hand_1",
                                ros::Time(0), transform_LH);
         }
         catch (tf::TransformException ex){
@@ -143,7 +148,7 @@ int main(int argc, char** argv){
         }
         
         try{
-            listener_LH.lookupTransform("/openni_depth_frame", "/torso_1",
+            listener_torso.lookupTransform("/openni_depth_frame", "/torso_1",
                                ros::Time(0), transform_torso);
         }
         catch (tf::TransformException ex){
@@ -151,30 +156,116 @@ int main(int argc, char** argv){
         }
 			
         try{
-            listener_LH.lookupTransform("/openni_depth_frame", "/neck_1",
-                                ros::Time(0), transform_neck);
+            listener_right_elbow.lookupTransform("/openni_depth_frame", "/right_elbow_1",
+                                ros::Time(0), transform_RE);
         }
         catch (tf::TransformException ex){
      				 ROS_ERROR("%s",ex.what());
         }	
 
         try{
-            listener_Lknee.lookupTransform("/openni_depth_frame", "/left_knee_1",
-                               ros::Time(0), transform_Lknee);
+            listener_left_elbow.lookupTransform("/openni_depth_frame", "/left_elbow_1",
+                               ros::Time(0), transform_LE);
         }
         catch (tf::TransformException ex){
      				 ROS_ERROR("%s",ex.what());
         }
         
         try{
-            listener_lefthip.lookupTransform("/openni_depth_frame", "/left_hip_1",
-                               ros::Time(0), transform_lefthip);
+            listener_right_hip.lookupTransform("/openni_depth_frame", "/right_hip_1",
+                               ros::Time(0), transform_RHip);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_left_hip.lookupTransform("/openni_depth_frame", "/left_hip_1",
+                               ros::Time(0), transform_Lhip);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_right_knee.lookupTransform("/openni_depth_frame", "/right_knee_1",
+                               ros::Time(0), transform_RK);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_left_knee.lookupTransform("/openni_depth_frame", "/left_knee_1",
+                               ros::Time(0), transform_LK);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_right_foot.lookupTransform("/openni_depth_frame", "/right_foot_1",
+                               ros::Time(0), transform_RF);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_left_foot.lookupTransform("/openni_depth_frame", "/left_foot_1",
+                               ros::Time(0), transform_LF);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_right_shoulder.lookupTransform("/openni_depth_frame", "/right_shoulder_1",
+                               ros::Time(0), transform_RS);
+        }
+        catch (tf::TransformException ex){
+     				 ROS_ERROR("%s",ex.what());
+        }
+        try{
+            listener_left_shoulder.lookupTransform("/openni_depth_frame", "/left_shoulder_1",
+                               ros::Time(0), transform_LS);
         }
         catch (tf::TransformException ex){
      				 ROS_ERROR("%s",ex.what());
         }	
 	
-	
+	String A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
+  String B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
+  String C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
+  String D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
+  String E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
+  String F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
+  String[] arrayofGes[6] = {A, B, C, D, E, F};
+
+  std_msgs::bool found = false;
+  int counter = 0;
+
+  switch(randomArr){
+        case 0:
+          found = methodA(A, randomGes);
+          break;
+        case 1:
+          found = methodB(B, randomGes);
+          break;
+        case 2:
+          found = methodC(C, randomGes);
+          break;
+        case 3:
+          found = methodD(D, randomGes);
+          break;
+        case 4:
+          found = methodE(E, randomGes);
+          break;
+        case 5:
+          found = methodF(F, randomGes);
+          break;
+      }
+   
+  
+ 	if(found){
+ 		return true;
+ 	}
+  
+  /*
 	std::stringstream ss;
     if((transform_LH.getOrigin().z() > transform_head.getOrigin().z()) == 1){
         std::cout<<"right hand high five!"<<std::endl;
@@ -258,59 +349,13 @@ int main(int argc, char** argv){
 
     ros::spin();
 	count++;
-    rate.sleep();
+    rate.sleep(); 
 	
-  }
-  return 0;
+  }*/
+  	}
+  return false;
 };
 
-void GestureListenerCallback(){
-  String A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
-  String B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
-  String C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
-  String D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
-  String E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
-  String F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
-  String[] arrayofGes[6] = {A, B, C, D, E, F};
-
-  bool found = false;
-  int counter = 0;
-
-  while(!found && counter <6){
-    if(std::find(std::begin(arrayofGes[counter]), std::end(arrayofGes[counter]), currentGesture) != std::end(arrayofGes[counter])){
-      switch(counter){
-        case 0:
-          methodA(A, currentString);
-          found = true;
-          break;
-        case 1:
-          methodB(B, currentString);
-          found = true;
-          break;
-        case 2:
-          methodC(C, currentString);
-          found = true;
-          break;
-        case 3:
-          methodD(D, currentString);
-          found = true;
-          break;
-        case 4:
-          methodE(E, currentString);
-          found = true;
-          break;
-        case 5:
-          methodF(F, currentString);
-          found = true;
-          break;
-      }
-      counter++;
-      }
-  
-  }
-
-
-}
 
 
 void methodA(String[] arr, String currentString){ //uses motion
@@ -327,12 +372,12 @@ void methodB(String[] arr, String currentString){ //also uses motion
 }
 
 void methodC(String[] arr, String currentString){
-
+	
   switch(currentString){
     case arr[0]: //right hand pat head
       if(fabs(transform_head.getOrigin().z()-transform_LH.getOrigin().z()) < .15 == 1){
         if(fabs(transform_head.getOrigin().y() - transform_LH.getOrigin().y()) < .1 == 1){
-          gestureFound.publish(true);
+          return true;
         }
       }
       gestureFound.publish(false);

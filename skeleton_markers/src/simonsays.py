@@ -10,11 +10,12 @@ from datetime import datetime
 
 
 
-def simonsays(gesture):
+def simonsays(gesture, randomArr, randomGes):
     rospy.wait_for_service('skeleton_listener')
     try:
         skeleton_listener = rospy.ServiceProxy('skeleton_listener', skeletonlistener)
-        return resp1.sum
+        resp1 = skeleton_listener(gesture, randomArr, randomGes)
+        return resp1.flag
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
 
@@ -27,20 +28,18 @@ def randomGenerator():
 	E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"}
 	F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"}
 	gestureArr[4] = {A, B, C, D, E, F}
-    newNum = randint(0,3) + 2
-    prev = 
-    randomArrNum = randint(0,3) + 2
-
-    randomGestureNum = randint(0,4)
-
+   	newNum = randint(0,3) + 2
+    	global randomArrNum = randint(0,3) + 2
+	global randomGestureNum = randint(0,4)
 	randomArr = gestureArr[randomArrNum]
-    randomGesture = randomArr[randomGestureNum]
-    return randomGesture  
+    	randomGesture = randomArr[randomGestureNum]
+    	return randomGesture  
 
 
 
 def intro():
     rospy.init_node('listener', anonymous=True)
+    
     global pub = rospy.Publisher("whatsimonsays", String)
     pub.publish("Hi my name is Simon, and this is Simon says.")
     pub.publish("rules....");
@@ -83,7 +82,7 @@ if __name__ == '__main__':
             alreadyDone.append(gesture)
 
             toSay(simonBool)
-            detected = simonsays(gesture)
+            detected = simonsays(gesture, randomArrNum, randomGestureNum)
             if(detected && simonBool == 0):
             	lost = True
             elif(!detected && simonBool == 1):

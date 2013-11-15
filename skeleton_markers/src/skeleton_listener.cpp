@@ -7,6 +7,9 @@
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
 #include "skeleton_markers/gestureFound.h"
+#include <iostream>
+#include <ctime>
+#include <chrono>
 
 std_msgs::bool gestureDetecter(gesture, randomArr, randomGes);
 
@@ -61,7 +64,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener::Request  &req,
   //figure out time response here;
   //if time > 3 return false, otherwise return gesture Detecter (req.gesture);
   // ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-  ROS_INFO("sending back response: [%s]", res.flag);
+  //ROS_INFO("sending back response: [%s]", res.flag);
   return true;
 }
 
@@ -117,8 +120,12 @@ int main(int argc, char** argv){
 std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
     	ros::Rate rate(5.0);
     	
-    	
-  while (node.ok()){
+  std::chrono::time_point<std::chrono::system_clock> start, end;
+  start = std::chrono::system_clock::now();
+    
+ 
+  std::chrono::duration<double> elapsed_seconds = 0;  	
+  while (node.ok() && elapsed_seconds < 5){
         
         try{
             listener_head.lookupTransform("/openni_depth_frame", "/head_1",
@@ -257,7 +264,8 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
           break;
   }
    
-  
+  end = std::chrono::system_clock::now(); 
+  elapsed_seconds = end-start;
  	if(found){
  		return true;
  	}

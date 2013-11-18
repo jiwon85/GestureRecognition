@@ -6,126 +6,111 @@
 #include <math.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
-#include "skeleton_markers/gestureFound.h"
+#include "skeleton_markers/skeleton_listener_service.h"
 #include <iostream>
-#include <ctime>
-#include <chrono>
-
-std_msgs::bool gestureDetecter(gesture, randomArr, randomGes);
+#include <time.h>
 
 
 
 
-tf::TransformListener listener_torso;
-tf::TransformListener listener_right_knee;
-tf::TransformListener listener_left_knee;
-tf::TransformListener listener_head;
-tf::TransformListener listener_right_hand;
-tf::TransformListener listener_left_hand;
-tf::TransformListener listener_right_hip;
-tf::TransformListener listener_left_hip;
-tf::TransformListener listener_right_elbow;
-tf::TransformListener listener_left_elbow;
-tf::TransformListener listener_right_shoulder;
-tf::TransformListener listener_left_shoulder;
-tf::TransformListener listener_right_foot;
-tf::TransformListener listener_left_foot;
-
-  
-
-static tf::StampedTransform transform_torso;
-static tf::StampedTransform transform_RK;
-static tf::StampedTransform transform_LK;
-static tf::StampedTransform transform_head;
-static tf::StampedTransform transform_RH;
-static tf::StampedTransform transform_LH;
-static tf::StampedTransform transform_RHip;
-static tf::StampedTransform transform_LHip;
-static tf::StampedTransform transform_RE;
-static tf::StampedTransform transform_LE;
-static tf::StampedTransform transform_RS;
-static tf::StampedTransform transform_LS;
-static tf::StampedTransform transform_RF;
-static tf::StampedTransform transform_LF;
 
 
-void methodA(std_msgs::string[] arr, int randomGes);
-void methodB(std_msgs::string[] arr, int randomGes);
-void methodC(std_msgs::string[] arr, int randomGes);
-void methodD(std_msgs::string[] arr, int randomGes);
-void methodE(std_msgs::string[] arr, int randomGes);
-void methodF(std_msgs::string[] arr, int randomGes);
 
-bool findTheGesture(skeleton_markers::skeleton_listener::Request  &req,
-         skeleton_listener::gestureFound::Response &res)
-{
+ 
+bool gestureDetecter(std::string gesture, int randomArr, int randomGes);
+bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, skeleton_markers::skeleton_listener_service::Response &res);
+bool methodA(int randomGes);
+bool methodB(int randomGes);
+bool methodC(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RE, tf::StampedTransform transform_LE);
+bool methodD(int randomGes, tf::StampedTransform transform_LH, tf::StampedTransform transform_RH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK);
+bool methodE(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_LHip, tf::StampedTransform transform_RHip, tf::StampedTransform transform_RS, tf::StampedTransform transform_LS);
+bool methodF(int randomGes, tf::StampedTransform transform_RF, tf::StampedTransform transform_LF, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK);
 
-  res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
+
+bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, skeleton_markers::skeleton_listener_service::Response &res)
+{	
+	
+  	res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
+  	
   //figure out time response here;
   //if time > 3 return false, otherwise return gesture Detecter (req.gesture);
   // ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
   //ROS_INFO("sending back response: [%s]", res.flag);
+  
   return true;
 }
 
 
+
+
 int main(int argc, char** argv){
+
+
   ros::init(argc, argv, "skeleton_listener");
   ros::NodeHandle node;
-	
-  ros::ServiceServer service = n.advertiseService("skeletonlistener", findTheGesture);
-  // gestureFound = 
-  //      node.advertise<std_msgs::bool>("whattosay", 1);
+  ros::ServiceServer service = node.advertiseService("skeletonlistener", findTheGesture);
 
-
-
-
-  // ros::init(argc, argv, "GestureListener");
-  // ros::NodeHandle n;
-  // ros::Subscriber sub = n.subscribe("currentGesture", 1000, GestureListenerCallback);
-
-  
-
-
-
-
-	/*tf::TransformListener listener_head;
-	tf::TransformListener listener_RH;
-	tf::TransformListener listener_LH;	
-	tf::TransformListener listener_righthip;
-	tf::TransformListener listener_lefthip;
-	tf::TransformListener listener_torso;
-	tf::TransformListener listener_neck;
-	tf::TransformListener listener_Lknee;
-	static tf::StampedTransform transform_head;
-	static tf::StampedTransform transform_RH;
-	//static tf::StampedTransform transform_LH;
-	//static tf::StampedTransform transform_righthip;
-	//static tf::StampedTransform transform_lefthip;
-	//static tf::StampedTransform transform_torso;
-	//static tf::StampedTransform transform_neck;
-	//static tf::StampedTransform transform_Lknee;
-	
-	bool 4 = {false};
-	for(int i=0; i<4; i++){
-		i = false;
-	}
-    
-	std_msgs::String msg;
-	int count = 0;
-	int current = 0; */
+	ros::spin();
 	return 0;
 }
 
-std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
-    	ros::Rate rate(5.0);
+bool gestureDetecter(std::string gesture, int randomArr, int randomGes){
+	
     	
-  std::chrono::time_point<std::chrono::system_clock> start, end;
-  start = std::chrono::system_clock::now();
+	
     
- 
-  std::chrono::duration<double> elapsed_seconds = 0;  	
-  while (node.ok() && elapsed_seconds < 5){
+ 	std::string arrayOfGestures[6][5] = {{"jump", "waveRH", "waveLH", "waveBH", "faceL"}, 
+ 					{"stepR", "stepL", "stepF", "stepB", "faceR"},
+ 					{"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"},
+ 					{"touchRK", "touchLK", "touchBK", "touchOK", "clapHands"},
+ 					{"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"},
+ 					{"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"}};
+ 					
+ 	/*std_msgs::string A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
+  	std_msgs::string B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
+ 	std_msgs::string C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
+  	std_msgs::string D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
+  	std_msgs::string E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
+  	std_msgs::string F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
+  	std_msgs::string arrayofGes[6] = {A, B, C, D, E, F}; */
+  	
+  time_t start = time(0);
+  double seconds_since_start = 0; 
+  	
+  	
+  	tf::TransformListener listener_torso;
+	tf::TransformListener listener_right_knee;
+	tf::TransformListener listener_left_knee;
+	tf::TransformListener listener_head;
+	tf::TransformListener listener_right_hand;
+	tf::TransformListener listener_left_hand;
+	tf::TransformListener listener_right_hip;
+	tf::TransformListener listener_left_hip;
+	tf::TransformListener listener_right_elbow;
+	tf::TransformListener listener_left_elbow;
+	tf::TransformListener listener_right_shoulder;
+	tf::TransformListener listener_left_shoulder;
+	tf::TransformListener listener_right_foot;
+	tf::TransformListener listener_left_foot;
+        
+        static tf::StampedTransform transform_torso;
+	static tf::StampedTransform transform_RK;
+	static tf::StampedTransform transform_LK;
+	static tf::StampedTransform transform_head;
+	static tf::StampedTransform transform_RH;
+	static tf::StampedTransform transform_LH;
+	static tf::StampedTransform transform_RHip;
+	static tf::StampedTransform transform_LHip;
+	static tf::StampedTransform transform_RE;
+	static tf::StampedTransform transform_LE;
+	static tf::StampedTransform transform_RS;
+	static tf::StampedTransform transform_LS;
+	static tf::StampedTransform transform_RF;
+	static tf::StampedTransform transform_LF;
+		
+  while (ros::ok() && seconds_since_start < 5){
+        
+        
         
         try{
             listener_head.lookupTransform("/openni_depth_frame", "/head_1",
@@ -184,7 +169,7 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
         }
         try{
             listener_left_hip.lookupTransform("/openni_depth_frame", "/left_hip_1",
-                               ros::Time(0), transform_Lhip);
+                               ros::Time(0), transform_LHip);
         }
         catch (tf::TransformException ex){
              ROS_ERROR("%s",ex.what());
@@ -232,151 +217,56 @@ std_msgs::bool gestureDetecter(gesture, randomArr, randomGes){
              ROS_ERROR("%s",ex.what());
         } 
 	
-	std_msgs::string A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
-  std_msgs::string B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
-  std_msgs::string C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
-  std_msgs::string D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
-  std_msgs::string E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
-  std_msgs::string F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
-  std_msgs::string[] arrayofGes[6] = {A, B, C, D, E, F};
+	
 
-  std_msgs::bool found = false;
-  int counter = 0;
+  	bool found = false;
 
   switch(randomArr){
         case 0:
-          found = methodA(A, randomGes);
+          found = methodA(randomGes);
           break;
         case 1:
-          found = methodB(B, randomGes);
+          found = methodB(randomGes);
           break;
         case 2:
-          found = methodC(C, randomGes);
+          found = methodC(randomGes, transform_head, transform_RH, transform_LH, transform_RE, transform_LE);
           break;
         case 3:
-          found = methodD(D, randomGes);
+          found = methodD(randomGes, transform_LH, transform_RH, transform_RK, transform_LK);
           break;
         case 4:
-          found = methodE(E, randomGes);
+          found = methodE(randomGes, transform_head, transform_RH, transform_LH, transform_LHip, transform_RHip, transform_RS, transform_LS);
           break;
         case 5:
-          found = methodF(F, randomGes);
+          found = methodF(randomGes, transform_RF, transform_LF, transform_RH, transform_LH, transform_RK, transform_LK);
           break;
   }
    
-  end = std::chrono::system_clock::now(); 
-  elapsed_seconds = end-start;
  	if(found){
+ 	
  		return true;
  	}
+ 	seconds_since_start = difftime(time(0), start);
   
-  /*
-	std_msgs::stringstream ss;
-    if((transform_LH.getOrigin().z() > transform_head.getOrigin().z()) == 1){
-        std::cout<<"right hand high five!"<<std::endl;
-        if(0 == false){
-            ss << "right hand high five";
-    		msg.data = ss.str();
-            current = count;
-            whattosay.publish(msg);
-            ROS_INFO("%s", msg.data.c_str());
-                for(int i=0; i<4; i++){
-                    i = false;
-                }
-            0 = true;
-        }
-    }
-	
-
-    if((transform_RH.getOrigin().z()>transform_head.getOrigin().z()) == 1){
-        std::cout<<"left hand high five!"<<std::endl;
-        if(1 == false){
-            ss << "left hand high five";
-            msg.data = ss.str();
-            current = count;
-            whattosay.publish(msg);
-            ROS_INFO("%s", msg.data.c_str());
-            for(int i=0; i<4; i++){
-                i = false;
-            }
-            1 = true;
-        }
-	}
-
-    //uncomment below for debugging purposes
-	static double rightHandZ = transform_LH.getOrigin().z();
-	static double leftHandZ = transform_RH.getOrigin().z();
-	static double torsoZ = transform_torso.getOrigin().z();
-	static double neckZ = transform_neck.getOrigin().z();
-	if((rightHandZ-(torsoZ+.05)) < .2  == 1){
-		//std::cout<<"Right Hand height correct"<<std::endl;
-        if(transform_RH.getOrigin().z() < transform_torso.getOrigin().z() == 1){
-			//std::cout<<"Left Hand lower than torso"<<std::endl;
-			if(fabs(transform_torso.getOrigin().y()-transform_LH.getOrigin().y()) < .1 == 1){
-				std::cout<<"national anthem!"<<std::endl;
-				if(2 == false){
-					ss << "god bless america";
-                    msg.data = ss.str();
-					current = count;
-					whattosay.publish(msg);
-					ROS_INFO("%s", msg.data.c_str());
-					for(int i=0; i<4; i++){
-						i = false;
-					}
-					2 = true;
-				}
-			}
-		}
-	}
-
-    //uncomment below for debugging
-	if(transform_lefthip.getOrigin().z()-transform_Lknee.getOrigin().z() < .1 == 1){
-		//std::cout<<"kungfu knee"<<std::endl;
-		if(fabs(transform_LH.getOrigin().z()-transform_RH.getOrigin().z()) <.1 == 1){
-			//std::cout<<"hand heights yoga"<<std::endl;
-			if(fabs(transform_LH.getOrigin().y()-transform_RH.getOrigin().y()) <.1 == 1){
-				std::cout<<"kung foo"<<std::endl;
-				if(3 == false){
-					ss << "kung foo";
-                    msg.data = ss.str();
-					current = count;
-					whattosay.publish(msg);
-					ROS_INFO("%s", msg.data.c_str());
-					for(int i=0; i<4; i++){
-						i = false;
-					}
-					3 = true;
-				}
-			} 		
-		}  
-	}
-
-
-    ros::spin();
-	count++;
-    rate.sleep(); 
-	
-  }*/
+  
   	}
+
   return false;
 };
 
 
 
-std_msgs::bool methodA(std_msgs::string[] arr, int randomGes){ //uses motion
+bool methodA(int randomGes){ //uses motion
 
-  switch(randomGes){
-    case 0: 
-
-  }
+	return true;
 
 }
 
-std_msgs::bool methodB(std_msgs::string[] arr, int randomGes){ //also uses motion
-
+bool methodB(int randomGes){ //also uses motion
+	return true;
 }
 
-std_msgs::bool methodC(std_msgs::string[] arr, int randomGes){
+bool methodC(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RE, tf::StampedTransform transform_LE){
 	
   switch(randomGes){
     case 0: //right hand pat head
@@ -420,7 +310,8 @@ std_msgs::bool methodC(std_msgs::string[] arr, int randomGes){
 
 }
 
-std_msgs::bool methodD(std_msgs::string[] arr, int randomGes){
+
+bool methodD(int randomGes, tf::StampedTransform transform_LH, tf::StampedTransform transform_RH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK){
 
   switch(randomGes){
     case 0: //touch RK with RH
@@ -451,15 +342,17 @@ std_msgs::bool methodD(std_msgs::string[] arr, int randomGes){
         }
       }
       break;
-    case 4: //turn around
-      if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
+    case 4: //previously: turned around ... now: clap hands
+      if(((fabs(transform_RH.getOrigin().z()) - transform_LH.getOrigin().z()) <= .1) && ((fabs(transform_RH.getOrigin().y()) - transform_LH.getOrigin().y()) <= .1)){
+      //if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
         return true;
       }
       break;
   }
+  return false;
 }
 
-std_msgs::bool methodE(std_msgs::string[] arr, int randomGes){
+bool methodE(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_LHip, tf::StampedTransform transform_RHip, tf::StampedTransform transform_RS, tf::StampedTransform transform_LS){
 
   switch(randomGes){
     case 0: //raise right hand
@@ -497,9 +390,10 @@ std_msgs::bool methodE(std_msgs::string[] arr, int randomGes){
       }
       break;
   }
+  return false;
 }
 
-std_msgs::bool methodF(std_msgs::string[] arr, int randomGes){
+bool methodF(int randomGes, tf::StampedTransform transform_RF, tf::StampedTransform transform_LF, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK){
 
   switch(randomGes){
     case 0: //stand on Right Foot
@@ -527,9 +421,12 @@ std_msgs::bool methodF(std_msgs::string[] arr, int randomGes){
       }
       break;
     case 4: //turn around
-      if(fabs(transform_torso.getRotation()-3.1427) < .3 == 1){
-        return true;
+      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
+        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+          return true;
+        }
       }
       break;
   }
+  return false;
 }

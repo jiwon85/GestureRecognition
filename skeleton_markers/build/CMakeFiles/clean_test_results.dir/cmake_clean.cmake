@@ -1,6 +1,8 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
+  "../srv_gen"
   "../src/skeleton_markers/msg"
+  "../src/skeleton_markers/srv"
   "CMakeFiles/clean_test_results"
 )
 

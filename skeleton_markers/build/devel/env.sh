@@ -6,6 +6,6 @@ if [ $# -eq 0 ] ; then
   /bin/echo "Calling env.sh without arguments is not supported anymore. Instead spawn a subshell and source a setup file manually."
   exit 1
 else
-  . "/home/fri/ros/rosbuild_ws/skeleton_markers/build/devel/setup.sh"
+  . "/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/devel/setup.sh"
   exec "$@"
 fi

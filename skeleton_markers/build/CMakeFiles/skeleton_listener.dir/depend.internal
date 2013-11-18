@@ -3,7 +3,8 @@
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o
  ../msg_gen/cpp/include/skeleton_markers/Skeleton.h
- /home/fri/ros/rosbuild_ws/skeleton_markers/src/skeleton_listener.cpp
+ ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h
+ /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp
  /opt/ros/groovy/include/XmlRpcDecl.h
  /opt/ros/groovy/include/XmlRpcValue.h
  /opt/ros/groovy/include/geometry_msgs/Point.h
@@ -75,6 +76,7 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o
  /opt/ros/groovy/include/rosconsole/macros_generated.h
  /opt/ros/groovy/include/sensor_msgs/ChannelFloat32.h
  /opt/ros/groovy/include/sensor_msgs/PointCloud.h
+ /opt/ros/groovy/include/std_msgs/Bool.h
  /opt/ros/groovy/include/std_msgs/Empty.h
  /opt/ros/groovy/include/std_msgs/Header.h
  /opt/ros/groovy/include/std_msgs/String.h

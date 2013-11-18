@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fri/ros/rosbuild_ws/skeleton_markers
+CMAKE_SOURCE_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fri/ros/rosbuild_ws/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/skeleton_listener.dir/depend.make
@@ -87,21 +87,21 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/sh
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/nodelet/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/openni_camera/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/orocos_kdl/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/python_orocos_kdl/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/tf/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o -c /home/fri/ros/rosbuild_ws/skeleton_markers/src/skeleton_listener.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o -c /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/fri/ros/rosbuild_ws/skeleton_markers/src/skeleton_listener.cpp > CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp > CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/fri/ros/rosbuild_ws/skeleton_markers/src/skeleton_listener.cpp -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o.requires:
 .PHONY : CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o.requires
@@ -137,6 +137,6 @@ CMakeFiles/skeleton_listener.dir/clean:
 .PHONY : CMakeFiles/skeleton_listener.dir/clean
 
 CMakeFiles/skeleton_listener.dir/depend:
-	cd /home/fri/ros/rosbuild_ws/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/rosbuild_ws/skeleton_markers /home/fri/ros/rosbuild_ws/skeleton_markers /home/fri/ros/rosbuild_ws/skeleton_markers/build /home/fri/ros/rosbuild_ws/skeleton_markers/build /home/fri/ros/rosbuild_ws/skeleton_markers/build/CMakeFiles/skeleton_listener.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles/skeleton_listener.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/skeleton_listener.dir/depend
 

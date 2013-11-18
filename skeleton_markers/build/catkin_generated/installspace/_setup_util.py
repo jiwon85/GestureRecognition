@@ -44,7 +44,7 @@ import sys
 # environment at generation time
 CMAKE_PREFIX_PATH = '/home/fri/ros/catkin_ws/devel;/opt/ros/groovy'.split(';')
 setup_dir = '/usr/local'
-if setup_dir not in CMAKE_PREFIX_PATH:
+if setup_dir and setup_dir not in CMAKE_PREFIX_PATH:
     CMAKE_PREFIX_PATH.insert(0, setup_dir)
 CMAKE_PREFIX_PATH = os.pathsep.join(CMAKE_PREFIX_PATH)
 

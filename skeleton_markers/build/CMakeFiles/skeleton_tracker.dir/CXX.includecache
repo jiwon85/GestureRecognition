@@ -34,29 +34,29 @@ geometry_msgs/Vector3.h
 geometry_msgs/Quaternion.h
 ../msg_gen/cpp/include/skeleton_markers/geometry_msgs/Quaternion.h
 
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectController.cpp
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectController.cpp
 XnOpenNI.h
 -
 XnCodecIDs.h
 -
 KinectController.h
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectController.h
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectController.h
 
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectController.h
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectController.h
 XnCppWrapper.h
 -
 
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectDisplay.cpp
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectDisplay.cpp
 GL/glut.h
 -
 KinectDisplay.h
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectDisplay.h
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectDisplay.h
 
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectDisplay.h
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectDisplay.h
 XnCppWrapper.h
 -
 
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/skeleton_tracker.cpp
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_tracker.cpp
 ros/ros.h
 -
 std_msgs/String.h
@@ -74,9 +74,9 @@ GL/glut.h
 string
 -
 KinectController.h
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectController.h
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectController.h
 KinectDisplay.h
-/home/fri/ros/rosbuild_ws/skeleton_markers/src/KinectDisplay.h
+/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/KinectDisplay.h
 
 /opt/ros/groovy/include/XmlRpcDecl.h
 ros/macros.h

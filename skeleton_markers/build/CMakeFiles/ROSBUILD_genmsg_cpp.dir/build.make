@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fri/ros/rosbuild_ws/skeleton_markers
+CMAKE_SOURCE_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fri/ros/rosbuild_ws/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build
 
 # Utility rule file for ROSBUILD_genmsg_cpp.
 
@@ -89,13 +89,13 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/Skeleton
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/nodelet/package.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/openni_camera/package.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/python_orocos_kdl/manifest.xml
+../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/python_orocos_kdl/package.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/tf/package.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/skeleton_markers/Skeleton.h"
-	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/fri/ros/rosbuild_ws/skeleton_markers/msg/Skeleton.msg
+	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/msg/Skeleton.msg
 
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/Skeleton.h
@@ -111,6 +111,6 @@ CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend:
-	cd /home/fri/ros/rosbuild_ws/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/rosbuild_ws/skeleton_markers /home/fri/ros/rosbuild_ws/skeleton_markers /home/fri/ros/rosbuild_ws/skeleton_markers/build /home/fri/ros/rosbuild_ws/skeleton_markers/build /home/fri/ros/rosbuild_ws/skeleton_markers/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles/ROSBUILD_genmsg_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_cpp.dir/depend
 

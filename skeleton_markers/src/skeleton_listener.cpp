@@ -35,10 +35,10 @@ int currentState;
 
 
 bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, skeleton_markers::skeleton_listener_service::Response &res)
-{	
-	
-  	//res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
-  	
+{ 
+  
+    //res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
+    
 
 
     if(req.state == 1){
@@ -304,63 +304,63 @@ if(active){
   
     }
 
-	ros::spin();
-	return 0;
+  ros::spin();
+  return 0;
 }
 
 /*bool gestureDetecter(std::string gesture, int randomArr, int randomGes){
-	
-    	
-	
+  
+      
+  
     
- 	std::string arrayOfGestures[6][5] = {{"jump", "waveRH", "waveLH", "waveBH", "faceL"}, 
- 					{"stepR", "stepL", "stepF", "stepB", "faceR"},
- 					{"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"},
- 					{"touchRK", "touchLK", "touchBK", "touchOK", "clapHands"},
- 					{"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"},
- 					{"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"}};
- 					
- 	/*std_msgs::string A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
-  	std_msgs::string B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
- 	std_msgs::string C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
-  	std_msgs::string D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
-  	std_msgs::string E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
-  	std_msgs::string F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
-  	std_msgs::string arrayofGes[6] = {A, B, C, D, E, F}; 
+  std::string arrayOfGestures[6][5] = {{"jump", "waveRH", "waveLH", "waveBH", "faceL"}, 
+          {"stepR", "stepL", "stepF", "stepB", "faceR"},
+          {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"},
+          {"touchRK", "touchLK", "touchBK", "touchOK", "clapHands"},
+          {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"},
+          {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"}};
+          
+  /*std_msgs::string A[5] = {"jump", "waveRH", "waveLH", "waveBH", "faceL"};
+    std_msgs::string B[5] = {"stepR", "stepL", "stepF", "stepB", "faceR"};
+  std_msgs::string C[5] = {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"};
+    std_msgs::string D[5] = {"touchRK", "touchLK", "touchBK", "touchOK", "turnAround"};
+    std_msgs::string E[5] = {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"};
+    std_msgs::string F[5] = {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"};
+    std_msgs::string arrayofGes[6] = {A, B, C, D, E, F}; 
   time_t start = time(0);
   double seconds_since_start = 0; 
-  	
-  	
-  	tf::TransformListener listener_torso;
-	tf::TransformListener listener_right_knee;
-	tf::TransformListener listener_left_knee;
-	tf::TransformListener listener_head;
-	tf::TransformListener listener_right_hand;
-	tf::TransformListener listener_left_hand;
-	tf::TransformListener listener_right_hip;
-	tf::TransformListener listener_left_hip;
-	tf::TransformListener listener_right_elbow;
-	tf::TransformListener listener_left_elbow;
-	tf::TransformListener listener_right_shoulder;
-	tf::TransformListener listener_left_shoulder;
-	tf::TransformListener listener_right_foot;
-	tf::TransformListener listener_left_foot;
+    
+    
+    tf::TransformListener listener_torso;
+  tf::TransformListener listener_right_knee;
+  tf::TransformListener listener_left_knee;
+  tf::TransformListener listener_head;
+  tf::TransformListener listener_right_hand;
+  tf::TransformListener listener_left_hand;
+  tf::TransformListener listener_right_hip;
+  tf::TransformListener listener_left_hip;
+  tf::TransformListener listener_right_elbow;
+  tf::TransformListener listener_left_elbow;
+  tf::TransformListener listener_right_shoulder;
+  tf::TransformListener listener_left_shoulder;
+  tf::TransformListener listener_right_foot;
+  tf::TransformListener listener_left_foot;
         
         static tf::StampedTransform transform_torso;
-	static tf::StampedTransform transform_RK;
-	static tf::StampedTransform transform_LK;
-	static tf::StampedTransform transform_head;
-	static tf::StampedTransform transform_RH;
-	static tf::StampedTransform transform_LH;
-	static tf::StampedTransform transform_RHip;
-	static tf::StampedTransform transform_LHip;
-	static tf::StampedTransform transform_RE;
-	static tf::StampedTransform transform_LE;
-	static tf::StampedTransform transform_RS;
-	static tf::StampedTransform transform_LS;
-	static tf::StampedTransform transform_RF;
-	static tf::StampedTransform transform_LF;
-		
+  static tf::StampedTransform transform_RK;
+  static tf::StampedTransform transform_LK;
+  static tf::StampedTransform transform_head;
+  static tf::StampedTransform transform_RH;
+  static tf::StampedTransform transform_LH;
+  static tf::StampedTransform transform_RHip;
+  static tf::StampedTransform transform_LHip;
+  static tf::StampedTransform transform_RE;
+  static tf::StampedTransform transform_LE;
+  static tf::StampedTransform transform_RS;
+  static tf::StampedTransform transform_LS;
+  static tf::StampedTransform transform_RF;
+  static tf::StampedTransform transform_LF;
+    
   while (ros::ok() && seconds_since_start < 5){
         
         
@@ -469,10 +469,10 @@ if(active){
         catch (tf::TransformException ex){
              ROS_ERROR("%s",ex.what());
         } 
-	
-	
+  
+  
 
-  	bool found = false;
+    bool found = false;
 
   switch(randomArr){
         case 0:
@@ -495,14 +495,14 @@ if(active){
           break;
   }
    
- 	if(found){
- 	
- 		return true;
- 	}
- 	seconds_since_start = difftime(time(0), start);
+  if(found){
+  
+    return true;
+  }
+  seconds_since_start = difftime(time(0), start);
   
   
-  	}
+    }
 
   return false;
 };*/
@@ -511,16 +511,16 @@ if(active){
 
 bool methodA(int randomGes){ //uses motion
 
-	return true;
+  return true;
 
 }
 
 bool methodB(int randomGes){ //also uses motion
-	return true;
+  return true;
 }
 
 bool methodC(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RE, tf::StampedTransform transform_LE){
-	
+  
   switch(randomGes){
     case 0: //right hand pat head
       if(fabs(transform_head.getOrigin().z()-transform_LH.getOrigin().z()) < .15 == 1){

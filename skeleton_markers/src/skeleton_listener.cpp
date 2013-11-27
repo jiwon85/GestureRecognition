@@ -40,7 +40,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
     //res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
     
 
-
+	
     if(req.state == 1){
 
       if(currentState == 3){
@@ -102,7 +102,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
 
 int main(int argc, char** argv){
 
-
+	currentState = 3;
   ros::init(argc, argv, "skeleton_listener");
   ros::NodeHandle node;
   ros::ServiceServer service = node.advertiseService("skeletonlistener", findTheGesture);

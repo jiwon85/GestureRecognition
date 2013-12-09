@@ -118,15 +118,17 @@ if __name__ == '__main__':
     currentGesture = randomGenerator()
     
     while(loopCount<10 and not lost):
-    	
+    	print currentGesture[0]
         print "Im in while statement"
-	#we're commenting out the randomizing of the simons says for now        
+		#print "currentGesture[0]"
+		#we're commenting out the randomizing of the simons says for now        
         #simonBool = randint(0,1)
         simonBool = 1
         #add prevnum comparison somewhere else i guess
-        if alreadyDone == False:
-            alreadyDone[currentGesture[0]][currentGesture[1] = True
-	    
+
+        if (alreadyDone == False):
+		 alreadyDone[currentGesture[0]][currentGesture[1]] = True
+	   print "about to start detecting a gestures" 
 		
             toSay(simonBool, currentGesture[0], currentGesture[1])
             #print (currentGesture)
@@ -140,7 +142,7 @@ if __name__ == '__main__':
             	then = datetime.now()
             	secondsThen = then.second
             	difference = secondsThen - secondsNow 
-            detected = simonSays(currentGesture[0], currentGesture[1], 2)
+            detected = simonsays(currentGesture[0], currentGesture[1], 2)
             if(detected and simonBool == 0):
             	lost = True
             elif(not detected and simonBool == 1):
@@ -148,7 +150,7 @@ if __name__ == '__main__':
             loopCount+=1
         else:
             currentGesture = randomGenerator()
-        simonsSays(0, 0, 3)
+        simonsays(0, 0, 3)
     if(lost):
     	print "You lost the game."
       #  pub.publish("you lost the game. goodbye")

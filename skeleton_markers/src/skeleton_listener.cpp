@@ -17,7 +17,7 @@
 
 
  
-bool gestureDetecter(std::string gesture, int randomArr, int randomGes);
+//bool (std::string gesture, int randomArr, int randomGes);
 bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, skeleton_markers::skeleton_listener_service::Response &res);
 bool methodA(int randomGes);
 bool methodB(int randomGes);
@@ -145,24 +145,25 @@ int main(int argc, char** argv){
   tf::TransformListener listener_right_foot;
   tf::TransformListener listener_left_foot;
         
+ 
+  ros::Rate rate(10.0);
+  
+  while (node.ok()){
+        
         static tf::StampedTransform transform_torso;
-  static tf::StampedTransform transform_RK;
-  static tf::StampedTransform transform_LK;
-  static tf::StampedTransform transform_head;
-  static tf::StampedTransform transform_RH;
-  static tf::StampedTransform transform_LH;
-  static tf::StampedTransform transform_RHip;
-  static tf::StampedTransform transform_LHip;
-  static tf::StampedTransform transform_RE;
-  static tf::StampedTransform transform_LE;
-  static tf::StampedTransform transform_RS;
-  static tf::StampedTransform transform_LS;
-  static tf::StampedTransform transform_RF;
-  static tf::StampedTransform transform_LF;
-    
-  while (node::ok()){
-        
-        
+ 		static tf::StampedTransform transform_RK;
+  		static tf::StampedTransform transform_LK;
+  		static tf::StampedTransform transform_head;
+  		static tf::StampedTransform transform_RH;
+  		static tf::StampedTransform transform_LH;
+  		static tf::StampedTransform transform_RHip;
+  		static tf::StampedTransform transform_LHip;
+  		static tf::StampedTransform transform_RE;
+  		static tf::StampedTransform transform_LE;
+  		static tf::StampedTransform transform_RS;
+  		static tf::StampedTransform transform_LS;
+  		static tf::StampedTransform transform_RF;
+  		static tf::StampedTransform transform_LF;
         
         try{
             listener_head.lookupTransform("/openni_depth_frame", "/head_1",

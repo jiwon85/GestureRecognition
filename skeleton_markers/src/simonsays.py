@@ -46,14 +46,14 @@ def randomGenerator():
 		["raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"],
 		["standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"]]
     	
-    	arrayOfIndexes = [2,0]
-    	arrayOfIndexes[0] = randint(0,3) + 2
+  arrayOfIndexes = [2,0]
+  arrayOfIndexes[0] = randint(0,3) + 2
     	#print (randomArrNum)
 	arrayOfIndexes[1] = randint(0,4)
 	#print (randomGestureNum)
     	#randomGesture = A[randomArrNum][randomGestureNum]
     
-    	return arrayOfIndexes  
+  return arrayOfIndexes  
 
 
 
@@ -99,63 +99,64 @@ def inArray(array, currentGesture):
 
 
 if __name__ == '__main__':
-    prevNum = -2;
+  prevNum = -2;
     #print "Requesting %s"%(gesture)
     #start game loop
     #score = 0;
-    intro()
-    lost = False;
-    loopCount = 0;
+  intro()
+  lost = False;
+  loopCount = 0;
    
-    alreadyDone = [[False, False, False, False, False],
-    		[False, False, False, False, False],
-    		[False, False, False, False, False],
-    		[False, False, False, False, False],
-    		[False, False, False, False, False],
-    		[False, False, False, False, False]]
+  alreadyDone = [[False, False, False, False, False],
+    [False, False, False, False, False],
+    [False, False, False, False, False],
+    [False, False, False, False, False],
+    [False, False, False, False, False],
+    [False, False, False, False, False]]
     #print "Im about to start the WHILE STATEMETN"
     
-    currentGesture = randomGenerator()
+  currentGesture = randomGenerator()
     
-    while(loopCount<10 and not lost):
-    	print currentGesture[0]
-        print "Im in while statement"
+  while(loopCount<10 and not lost):
+   	print "row " currentGesture[0]
+    print "col " currentGesture[1]
+    print "Im in while statement"
 		#print "currentGesture[0]"
 		#we're commenting out the randomizing of the simons says for now        
         #simonBool = randint(0,1)
-        simonBool = 1
-        #add prevnum comparison somewhere else i guess
+    simonBool = 1
+      #add prevnum comparison somewhere else i guess
 
-        if (alreadyDone == False):
-		 alreadyDone[currentGesture[0]][currentGesture[1]] = True
-	   print "about to start detecting a gestures" 
+    if (alreadyDone == False):
+		  alreadyDone[currentGesture[0]][currentGesture[1]] = True
+      print "about to start detecting a gestures" 
 		
-            toSay(simonBool, currentGesture[0], currentGesture[1])
+      toSay(simonBool, currentGesture[0], currentGesture[1])
             #print (currentGesture)
-            simonsays(currentGesture[0], currentGesture[1], 1)
+      simonsays(currentGesture[0], currentGesture[1], 1)
             #print "this is if it was detected: "
             #print (detected)
-            current = datetime.now()
-            secondsNow = current.second
-            difference = 0
-            while(difference < 5):
-            	then = datetime.now()
-            	secondsThen = then.second
-            	difference = secondsThen - secondsNow 
-            detected = simonsays(currentGesture[0], currentGesture[1], 2)
-            if(detected and simonBool == 0):
-            	lost = True
-            elif(not detected and simonBool == 1):
-                lost = True
-            loopCount+=1
-        else:
-            currentGesture = randomGenerator()
-        simonsays(0, 0, 3)
-    if(lost):
-    	print "You lost the game."
-      #  pub.publish("you lost the game. goodbye")
+      current = datetime.now()
+      secondsNow = current.second
+      difference = 0
+      while(difference < 5):
+        then = datetime.now()
+        secondsThen = then.second
+        difference = secondsThen - secondsNow 
+      detected = simonsays(currentGesture[0], currentGesture[1], 2)
+      if(detected and simonBool == 0):
+        lost = True
+      elif(not detected and simonBool == 1):
+        lost = True
+      loopCount+=1
     else:
-        print "You won the game"
+      currentGesture = randomGenerator()
+  simonsays(0, 0, 3)
+  if(lost):
+  	print "You lost the game."
+      #  pub.publish("you lost the game. goodbye")
+  else:
+    print "You won the game"
        # pub.publish("you won simon says!")
     #generate gesture
     

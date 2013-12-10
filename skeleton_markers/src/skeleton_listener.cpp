@@ -33,7 +33,6 @@ bool active = false;
 int currentState;
 
 
-
 bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, skeleton_markers::skeleton_listener_service::Response &res)
 { 
   
@@ -64,6 +63,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
           active = true;
           res.success = true;
           currentState = 2;
+	  std::cout<< "this is detected in state 2: " << detected << "\n";
           res.flag = detected;
       }
 
@@ -80,6 +80,8 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
           res.success = true;
           currentState = 3;
           detected = false;
+	  std::cout<< "we resetted detected in state 3 to false\n";
+
       }
 
       else{
@@ -88,7 +90,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
 
     }
 
-	std::cout<<"i'm going to return true!!!!!!!!!!!!!!!!!!!\n";
+//	std::cout<<"i'm going to return true!!!!!!!!!!!!!!!!!!!\n";
 
   //figure out time response here;
   //if time > 3 return false, otherwise return gesture Detecter (req.gesture);
@@ -165,7 +167,7 @@ int main(int argc, char** argv){
   ros::Rate rate(1.0);
   
   while (node.ok()){
-       std::cout<<"trying to detect shit\n"; 
+   //    std::cout<<"trying to detect shit\n"; 
         
         try{
             listener_head.lookupTransform("/openni_depth_frame", "/head_1",
@@ -299,7 +301,7 @@ if(active){
   }
    }
   if(found){
-  
+     std::cout<< "it was found and we set detected to true\n";
     detected = true;
   }
   //seconds_since_start = difftime(time(0), start);
@@ -540,22 +542,22 @@ bool methodC(int randomGes, tf::StampedTransform transform_head, tf::StampedTran
       }
       break;
     case 2: //touch RE
-      if(fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .05 == 1){
-        if(fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .05 == 1){
+      if(fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .1 == 1){
+        if(fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .1 == 1){
           return true;
         }
       }
       break;
     case 3: //touch LE
-      if(fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .05 == 1){
-        if(fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .05 == 1){
+      if(fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .1 == 1){
+        if(fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .1 == 1){
           return true;
         }
       }
       break;
-    case 4: //touch LE
-      if((fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .05 == 1)){
+    case 4: //touch both elbows
+      if((fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .15 == 1) && (fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .15 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .15 == 1) && (fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .15 == 1)){
           return true;
         }
       }
@@ -571,29 +573,29 @@ bool methodD(int randomGes, tf::StampedTransform transform_LH, tf::StampedTransf
 
   switch(randomGes){
     case 0: //touch RK with RH
-      if(fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1){ //take care of other hand
-        if(fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1){
+      if(fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .1 == 1){ //take care of other hand
+        if(fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .1 == 1){
           return true;
         }
       }
       break;
     case 1: //touch LK with LH
-      if(fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1){ //take care of other hand
-        if(fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1){
+      if(fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .1 == 1){ //take care of other hand
+        if(fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .1 == 1){
           return true;
         }
       }
       break;
     case 2: //touch BK
-      if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+      if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .1 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .1 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .1 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .1 == 1)){
           return true;
         }
       }
       break;
     case 3: //touch OK
-      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
+      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .15 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .15 == 1)){
+        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .15 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .15 == 1)){
           return true;
         }
       }

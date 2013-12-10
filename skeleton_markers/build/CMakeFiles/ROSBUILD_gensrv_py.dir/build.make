@@ -51,7 +51,7 @@ CMakeFiles/ROSBUILD_gensrv_py: ../src/skeleton_markers/srv/__init__.py
 
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: ../srv/skeleton_listener_service.srv
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/gensrv_py.py
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/lib/roslib/gendeps
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: ../manifest.xml
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/genmsg/package.xml
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/genpy/package.xml
@@ -91,10 +91,8 @@ CMakeFiles/ROSBUILD_gensrv_py: ../src/skeleton_markers/srv/__init__.py
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/nodelet/package.xml
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/openni_camera/package.xml
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/orocos_kdl/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/python_orocos_kdl/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/tf/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /home/fri/ros/catkin_ws/src/openni_tracker/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/skeleton_markers/srv/_skeleton_listener_service.py"
 	/opt/ros/groovy/share/rospy/rosbuild/scripts/gensrv_py.py --noinitpy /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv

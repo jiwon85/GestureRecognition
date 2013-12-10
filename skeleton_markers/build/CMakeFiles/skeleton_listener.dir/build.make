@@ -87,10 +87,8 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/sh
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/nodelet/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/openni_camera/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/orocos_kdl/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/python_orocos_kdl/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/share/tf/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /home/fri/ros/catkin_ws/src/openni_tracker/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o -c /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp

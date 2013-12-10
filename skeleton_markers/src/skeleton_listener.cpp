@@ -38,7 +38,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
 { 
   
     //res.flag = gestureDetecter(req.gesture, req.randomArr, req.randomGes);
-    
+   std::cout<< "i'm in the findGesture emthod***********\n"; 
 
 	
     if(req.state == 1){
@@ -49,6 +49,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
           active = true;
           res.success = true;
           currentState = 1;
+	std::cout << "we're in state 1 current gesture is\n";
       }
 
       else{
@@ -87,7 +88,7 @@ bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, 
 
     }
 
-
+	std::cout<<"i'm going to return true!!!!!!!!!!!!!!!!!!!\n";
 
   //figure out time response here;
   //if time > 3 return false, otherwise return gesture Detecter (req.gesture);
@@ -105,6 +106,7 @@ int main(int argc, char** argv){
 	currentState = 3;
   ros::init(argc, argv, "skeleton_listener");
   ros::NodeHandle node;
+	std::cout<<"i'm about to advertise\n";
   ros::ServiceServer service = node.advertiseService("skeletonlistener", findTheGesture);
 
 
@@ -146,24 +148,24 @@ int main(int argc, char** argv){
   tf::TransformListener listener_left_foot;
         
  
-  ros::Rate rate(10.0);
+	static tf::StampedTransform transform_torso;
+ 	static tf::StampedTransform transform_RK;
+  	static tf::StampedTransform transform_LK;
+  	static tf::StampedTransform transform_head;
+  	static tf::StampedTransform transform_RH;
+  	static tf::StampedTransform transform_LH;
+  	static tf::StampedTransform transform_RHip;
+  	static tf::StampedTransform transform_LHip;
+ 	static tf::StampedTransform transform_RE;
+  	static tf::StampedTransform transform_LE;
+  	static tf::StampedTransform transform_RS;
+  	static tf::StampedTransform transform_LS;
+  	static tf::StampedTransform transform_RF;
+  	static tf::StampedTransform transform_LF;
+  ros::Rate rate(1.0);
   
   while (node.ok()){
-        
-        static tf::StampedTransform transform_torso;
- 		static tf::StampedTransform transform_RK;
-  		static tf::StampedTransform transform_LK;
-  		static tf::StampedTransform transform_head;
-  		static tf::StampedTransform transform_RH;
-  		static tf::StampedTransform transform_LH;
-  		static tf::StampedTransform transform_RHip;
-  		static tf::StampedTransform transform_LHip;
-  		static tf::StampedTransform transform_RE;
-  		static tf::StampedTransform transform_LE;
-  		static tf::StampedTransform transform_RS;
-  		static tf::StampedTransform transform_LS;
-  		static tf::StampedTransform transform_RF;
-  		static tf::StampedTransform transform_LF;
+       std::cout<<"trying to detect shit\n"; 
         
         try{
             listener_head.lookupTransform("/openni_depth_frame", "/head_1",
@@ -302,10 +304,10 @@ if(active){
   }
   //seconds_since_start = difftime(time(0), start);
   
-  
+  ros::spinOnce();
     }
 
-  ros::spin();
+  
   return 0;
 }
 

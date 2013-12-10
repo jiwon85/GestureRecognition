@@ -13,30 +13,14 @@ from datetime import datetime
 #pub =None
 
 def simonsays(randomArrNum, randomGesNum, wantedState):
-    if(wantedState == 1):
-    	rospy.wait_for_service('skeletonlistener')
-    	try:
-     	   skeleton_listener = rospy.ServiceProxy('skeletonlistener', skeleton_listener_service)
-     	   resp1 = skeleton_listener(randomArrNum, randomGesNum, wantedState)
-     	   return resp1.flag
-    	except rospy.ServiceException, e:
-    		print "Service call failed: %s"%e
-    elif(wantedState == 2):
-    	rospy.wait_for_service('skeletonlistener')
-    	try:
-     	   skeleton_listener = rospy.ServiceProxy('skeletonlistener', skeleton_listener_service)
-     	   resp1 = skeleton_listener(randomArrNum, randomGesNum, wantedState)
-     	   return resp1.flag
-    	except rospy.ServiceException, e:
-    		print "Service call failed: %s"%e
-    else:
-    	rospy.wait_for_service('skeletonlistener')
-    	try:
-     	   skeleton_listener = rospy.ServiceProxy('skeletonlistener', skeleton_listener_service)
-     	   resp1 = skeleton_listener(randomArrNum, randomGesNum, wantedState)
-     	   return resp1.success
-    	except rospy.ServiceException, e:
-    		print "Service call failed: %s"%e
+    rospy.wait_for_service('skeletonlistener')
+    try:
+    	skeleton_listener = rospy.ServiceProxy('skeletonlistener', skeleton_listener_service)
+     	resp1 = skeleton_listener(randomArrNum, randomGesNum, wantedState)
+	print "i'm back from service"
+     	return resp1.flag
+    except rospy.ServiceException, e:
+    	print "Service call failed: %s"%e
 
 def randomGenerator():
 	A = [["jump", "waveRH", "waveLH", "waveBH", "faceL"],
@@ -45,15 +29,14 @@ def randomGenerator():
 		["touchRK", "touchLK", "touchBK", "touchOK", "clapHands"],
 		["raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"],
 		["standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"]]
-    	
-  arrayOfIndexes = [2,0]
-  arrayOfIndexes[0] = randint(0,3) + 2
+	arrayOfIndexes = [2,0]
+  	arrayOfIndexes[0] = randint(0,3) + 2
     	#print (randomArrNum)
 	arrayOfIndexes[1] = randint(0,4)
 	#print (randomGestureNum)
     	#randomGesture = A[randomArrNum][randomGestureNum]
     
-  return arrayOfIndexes  
+  	return arrayOfIndexes  
 
 
 
@@ -84,7 +67,7 @@ def toSay(simonBool, row, col):
     if (simonBool == 1):
         gameCommand+= "simon says "
 
-    #gameCommand += List1[row][col]
+    gameCommand += List1[row][col]
     print (gameCommand) 
   #  pub.publish(gameCommand)
   
@@ -118,45 +101,48 @@ if __name__ == '__main__':
   currentGesture = randomGenerator()
     
   while(loopCount<10 and not lost):
-   	print "row " currentGesture[0]
-    print "col " currentGesture[1]
-    print "Im in while statement"
+   	print "row "+ str(currentGesture[0])
+    	print "col "+ str(currentGesture[1])
+    	print "Im in while statement"
 		#print "currentGesture[0]"
 		#we're commenting out the randomizing of the simons says for now        
         #simonBool = randint(0,1)
-    simonBool = 1
+   	simonBool = 1
       #add prevnum comparison somewhere else i guess
 
-    if (alreadyDone == False):
-		  alreadyDone[currentGesture[0]][currentGesture[1]] = True
-      print "about to start detecting a gestures" 
+    	if (alreadyDone[currentGesture[0]][currentGesture[1]] == False):
+		alreadyDone[currentGesture[0]][currentGesture[1]] = True
+      		print "about to start detecting a gestures" 
 		
-      toSay(simonBool, currentGesture[0], currentGesture[1])
+      		toSay(simonBool, currentGesture[0], currentGesture[1])
             #print (currentGesture)
-      simonsays(currentGesture[0], currentGesture[1], 1)
+      		simonsays(currentGesture[0], currentGesture[1], 1)
             #print "this is if it was detected: "
             #print (detected)
-      current = datetime.now()
-      secondsNow = current.second
-      difference = 0
-      while(difference < 5):
-        then = datetime.now()
-        secondsThen = then.second
-        difference = secondsThen - secondsNow 
-      detected = simonsays(currentGesture[0], currentGesture[1], 2)
-      if(detected and simonBool == 0):
-        lost = True
-      elif(not detected and simonBool == 1):
-        lost = True
-      loopCount+=1
-    else:
-      currentGesture = randomGenerator()
+      		current = datetime.now()
+      		secondsNow = current.second
+      		difference = 0
+      		print "about to go into time out while"
+		while(difference < 5):
+        		then = datetime.now()
+        		secondsThen = then.second
+        		difference = secondsThen - secondsNow
+		print "out of while loop" 
+      		detected = simonsays(currentGesture[0], currentGesture[1], 2)
+      		print "back from service"
+		if(detected and simonBool == 0):
+        		lost = True
+      		elif(not detected and simonBool == 1):
+        		lost = True
+      		loopCount+=1
+    	else:
+      		currentGesture = randomGenerator()
   simonsays(0, 0, 3)
   if(lost):
   	print "You lost the game."
       #  pub.publish("you lost the game. goodbye")
   else:
-    print "You won the game"
+    	print "You won the game"
        # pub.publish("you won simon says!")
     #generate gesture
     

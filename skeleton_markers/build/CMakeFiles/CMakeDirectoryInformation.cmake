@@ -12,9 +12,7 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 SET(CMAKE_C_INCLUDE_PATH
   "../include"
   "/opt/ros/groovy/include"
-  "/usr/include/libusb-1.0"
   "/usr/include/ni"
-  "/usr/include/eigen3"
   "../msg_gen/cpp/include"
   "../srv_gen/cpp/include"
   "/usr/include/openni"

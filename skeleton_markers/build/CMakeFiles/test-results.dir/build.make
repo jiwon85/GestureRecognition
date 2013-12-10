@@ -43,7 +43,7 @@ CMAKE_BINARY_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers
 include CMakeFiles/test-results.dir/progress.make
 
 CMakeFiles/test-results:
-	/opt/ros/groovy/share/rosunit/scripts/summarize_results.py --nodeps skeleton_markers
+	/opt/ros/groovy/share/rosunit/cmake/../scripts/summarize_results.py --nodeps skeleton_markers
 
 test-results: CMakeFiles/test-results
 test-results: CMakeFiles/test-results.dir/build.make

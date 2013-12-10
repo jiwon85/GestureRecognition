@@ -46,7 +46,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/Skeleton
 
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: ../msg/Skeleton.msg
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/lib/roslib/gendeps
+../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/std_msgs/msg/Header.msg
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/msg/Quaternion.msg
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/geometry_msgs/msg/Vector3.msg
@@ -89,10 +89,8 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/skeleton_markers/Skeleton
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/nodelet/package.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/openni_camera/package.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/python_orocos_kdl/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 ../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/share/tf/package.xml
-../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../msg_gen/cpp/include/skeleton_markers/Skeleton.h: /home/fri/ros/catkin_ws/src/openni_tracker/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/skeleton_markers/Skeleton.h"
 	/opt/ros/groovy/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/msg/Skeleton.msg

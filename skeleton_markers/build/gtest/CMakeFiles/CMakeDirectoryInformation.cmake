@@ -12,9 +12,7 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 SET(CMAKE_C_INCLUDE_PATH
   "/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/include"
   "/opt/ros/groovy/include"
-  "/usr/include/libusb-1.0"
   "/usr/include/ni"
-  "/usr/include/eigen3"
   "/usr/src/gtest/include"
   "/usr/src/gtest"
   )

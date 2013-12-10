@@ -1,6 +1,8 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
   "../srv_gen"
+  "../msg_gen"
+  "../srv_gen"
   "../src/skeleton_markers/msg"
   "../src/skeleton_markers/srv"
   "CMakeFiles/_catkin_empty_exported_target"

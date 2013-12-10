@@ -14,5 +14,6 @@ export LD_LIBRARY_PATH="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_ma
 export PATH="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/devel/bin:$PATH"
 export PKG_CONFIG_PATH="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PYTHONPATH="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROS_PACKAGE_PATH="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers:/home/fri/ros/rosbuild_ws/skeleton_markers:/home/fri/ros/catkin_ws/src:/opt/ros/groovy/share:/opt/ros/groovy/stacks"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers:/home/fri/ros/catkin_ws/src:/opt/ros/groovy/share:/opt/ros/groovy/stacks"
 export ROS_TEST_RESULTS_DIR="/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/test_results"

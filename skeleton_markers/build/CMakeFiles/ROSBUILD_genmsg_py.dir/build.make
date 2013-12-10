@@ -51,7 +51,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/skeleton_markers/msg/__init__.py
 
 ../src/skeleton_markers/msg/_Skeleton.py: ../msg/Skeleton.msg
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/lib/roslib/gendeps
+../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/std_msgs/msg/Header.msg
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/geometry_msgs/msg/Quaternion.msg
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/geometry_msgs/msg/Vector3.msg
@@ -94,10 +94,8 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/skeleton_markers/msg/__init__.py
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/nodelet/package.xml
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/openni_camera/package.xml
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/orocos_kdl/package.xml
-../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/python_orocos_kdl/package.xml
-../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/stacks/orocos_kinematics_dynamics/kdl/manifest.xml
 ../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/share/tf/package.xml
-../src/skeleton_markers/msg/_Skeleton.py: /opt/ros/groovy/stacks/openni_tracker/manifest.xml
+../src/skeleton_markers/msg/_Skeleton.py: /home/fri/ros/catkin_ws/src/openni_tracker/package.xml
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/skeleton_markers/msg/_Skeleton.py"
 	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/msg/Skeleton.msg

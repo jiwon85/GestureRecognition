@@ -19,12 +19,12 @@
  
 //bool (std::string gesture, int randomArr, int randomGes);
 bool findTheGesture(skeleton_markers::skeleton_listener_service::Request  &req, skeleton_markers::skeleton_listener_service::Response &res);
-bool methodA(int randomGes);
+bool methodA(int randomGes, tf::StampedTransform transform_head);
 bool methodB(int randomGes);
 bool methodC(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RE, tf::StampedTransform transform_LE);
 bool methodD(int randomGes, tf::StampedTransform transform_LH, tf::StampedTransform transform_RH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK);
 bool methodE(int randomGes, tf::StampedTransform transform_head, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_LHip, tf::StampedTransform transform_RHip, tf::StampedTransform transform_RS, tf::StampedTransform transform_LS);
-bool methodF(int randomGes, tf::StampedTransform transform_RF, tf::StampedTransform transform_LF, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK);
+bool methodF(int randomGes, tf::StampedTransform transform_RF, tf::StampedTransform transform_LF, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK, tf::StampedTransform transform_torso);
 
 int randomArray= 0;
 int randomGesture = 0;
@@ -281,7 +281,7 @@ int main(int argc, char** argv){
 if(active){
   switch(randomArray){
         case 0:
-          found = methodA(randomGesture);
+          found = methodA(randomGesture, transform_head);
           break;
         case 1:
           found = methodB(randomGesture);
@@ -296,7 +296,7 @@ if(active){
           found = methodE(randomGesture, transform_head, transform_RH, transform_LH, transform_LHip, transform_RHip, transform_RS, transform_LS);
           break;
         case 5:
-          found = methodF(randomGesture, transform_RF, transform_LF, transform_RH, transform_LH, transform_RK, transform_LK);
+          found = methodF(randomGesture, transform_RF, transform_LF, transform_RH, transform_LH, transform_RK, transform_LK, transform_torso);
           break;
   }
    }
@@ -305,7 +305,15 @@ if(active){
     detected = true;
   }
   //seconds_since_start = difftime(time(0), start);
-  
+  tf::Quaternion q = transform_head.getRotation();
+ // q.setRPY(0,0,1);
+  q.normalize();
+  double x = q.x();
+  double y = q.y();
+  double z = q.z();
+  double w = q.w();
+  double angle = asin(-2*(x*z-w*y));
+  //std::cout<<angle<<"\n";
   ros::spinOnce();
     }
 
@@ -514,8 +522,9 @@ if(active){
 
 
 
-bool methodA(int randomGes){ //uses motion
-
+bool methodA(int randomGes, tf::StampedTransform transform_head){ //uses motion
+  double angle = transform_head.getRotation().getAngle();
+  std::cout<<angle<<"\n"; 
   return true;
 
 }
@@ -593,9 +602,9 @@ bool methodD(int randomGes, tf::StampedTransform transform_LH, tf::StampedTransf
         }
       }
       break;
-    case 3: //touch OK
-      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .15 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .15 == 1)){
-        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .15 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .15 == 1)){
+    case 3: //touch BK 
+      if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .1 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .1 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .1 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .1 == 1)){
           return true;
         }
       }
@@ -629,20 +638,15 @@ bool methodE(int randomGes, tf::StampedTransform transform_head, tf::StampedTran
       }
       break;
     case 3: //hands on hips
-      if((fabs(transform_LH.getOrigin().z()-transform_LHip.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RHip.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_LH.getOrigin().y()-transform_LHip.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RHip.getOrigin().y()) < .05 == 1)){
+      if((fabs(transform_LH.getOrigin().z()-transform_LHip.getOrigin().z()) < .1 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RHip.getOrigin().z()) < .1 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LHip.getOrigin().y()) < .1 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RHip.getOrigin().y()) < .1 == 1)){
           return true;
         }
       }
       break;
     case 4: //hands on shoulders
-      if((fabs(transform_RH.getOrigin().z()-transform_LS.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RS.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_RH.getOrigin().y()-transform_LS.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RS.getOrigin().y()) < .05 == 1)){
-          return true;
-        }
-      }//or cross your hands on shoulders
-      else if((fabs(transform_LH.getOrigin().z()-transform_LS.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RS.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_LH.getOrigin().y()-transform_LS.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RS.getOrigin().y()) < .05 == 1)){
+      if((fabs(transform_LH.getOrigin().z()-transform_LS.getOrigin().z()) < .1 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RS.getOrigin().z()) < .1 == 1)){
+        if((fabs(transform_LH.getOrigin().y()-transform_LS.getOrigin().y()) < .1 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RS.getOrigin().y()) < .1 == 1)){
           return true;
         }
       }
@@ -651,37 +655,35 @@ bool methodE(int randomGes, tf::StampedTransform transform_head, tf::StampedTran
   return false;
 }
 
-bool methodF(int randomGes, tf::StampedTransform transform_RF, tf::StampedTransform transform_LF, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK){
+bool methodF(int randomGes, tf::StampedTransform transform_RF, tf::StampedTransform transform_LF, tf::StampedTransform transform_RH, tf::StampedTransform transform_LH, tf::StampedTransform transform_RK, tf::StampedTransform transform_LK, tf::StampedTransform transform_torso){
 
   switch(randomGes){
-    case 0: //stand on Right Foot
-      if(transform_RF.getOrigin().z() > transform_LF.getOrigin().z() && transform_RF.getOrigin().z() < transform_LK.getOrigin().z()){ //take care of other hand
+    case 0: //lift right leg
+      if(((transform_LK.getOrigin().z()-transform_RK.getOrigin().z())>.075 == 1)){ //take care of other hand
         return true;
       }
       break;
-    case 1: //stand on left foot
-      if(transform_LF.getOrigin().z() > transform_RF.getOrigin().z() && transform_LF.getOrigin().z() < transform_RK.getOrigin().z()){ //take care of other hand
-        return true;
+    case 1: //lift left leg
+	if(((transform_RK.getOrigin().z()-transform_LK.getOrigin().z())>.075 == 1)){ 
+	return true;
       }
       break;
-    case 2: //touch BK
-      if((fabs(transform_LH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_RH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_LH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_RH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          return true;
-        }
+    case 2: //right hand over stomach
+      if((fabs(transform_LH.getOrigin().z()-transform_torso.getOrigin().z()) < .15 == 1) && (fabs(transform_LH.getOrigin().y() - transform_torso.getOrigin().y()) < .15 ==1)){
+	    return true;
       }
       break;
-    case 3: //touch OK
-      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          return true;
-        }
+    case 3: //left hand over stomach
+      if((fabs(transform_RH.getOrigin().z()-transform_torso.getOrigin().z()) < .15 == 1) && (fabs(transform_RH.getOrigin().y() - transform_torso.getOrigin().y()) < .15 ==1)){
+	    return true;
       }
-      break;
-    case 4: //turn around
-      if((fabs(transform_RH.getOrigin().z()-transform_LK.getOrigin().z()) < .05 == 1) && (fabs(transform_LH.getOrigin().z()-transform_RK.getOrigin().z()) < .05 == 1)){
-        if((fabs(transform_RH.getOrigin().y()-transform_LK.getOrigin().y()) < .05 == 1) && (fabs(transform_LH.getOrigin().y()-transform_RK.getOrigin().y()) < .05 == 1)){
-          return true;
+	break;
+    case 4: //both hands over stomach
+       if((fabs(transform_LH.getOrigin().z()-transform_torso.getOrigin().z()) < .15 == 1) && (fabs(transform_LH.getOrigin().y() - transform_torso.getOrigin().y()) < .15 ==1)){
+	if((fabs(transform_RH.getOrigin().z()-transform_torso.getOrigin().z()) < .15 == 1) && (fabs(transform_RH.getOrigin().y() - transform_torso.getOrigin().y()) < .15 ==1)){
+	  
+
+	  return true;
         }
       }
       break;

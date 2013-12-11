@@ -10,7 +10,12 @@ from datetime import datetime
 
 #randomArrNum = -1
 #randomGestureNum = -1
-#pub =None
+pub = None
+
+def talker():
+	global pub
+	pub = rospy.Publisher('audio_say', String)
+	rospy.init_node('talker')  
 
 def simonsays(randomArrNum, randomGesNum, wantedState):
     rospy.wait_for_service('skeletonlistener')
@@ -26,9 +31,9 @@ def randomGenerator():
 	A = [["jump", "waveRH", "waveLH", "waveBH", "faceL"],
 		["stepR", "stepL", "stepF", "stepB", "faceR"],
 		["patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"],
-		["touchRK", "touchLK", "touchBK", "touchOK", "clapHands"],
+		["touchRK", "touchLK", "touchBK", "touchBK", "clapHands"],
 		["raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"],
-		["standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"]]
+		["liftRL", "liftLL", "RHoverStomach", "LHoverStomach", "bothHandsOverStomach"]]
 	arrayOfIndexes = [2,0]
   	arrayOfIndexes[0] = randint(0,3) + 2
     	#print (randomArrNum)
@@ -46,22 +51,30 @@ def intro():
     #print "i initialized node"
    # pub = rospy.Publisher("whatsimonsays", String)
     #print "I finished defining pub for whatsimonsays"
-   # pub.publish("Hi my name is Simon, and this is Simon says.")
-    print "Hi my name is Simon, and this is Simon says.\n"
+   pub.publish("Hi my name is Simon, and this is Simon says.")
+   print "Hi my name is Simon, and this is Simon says.\n"
    # pub.publish("rules....");
    # pub.publish("if you want to start the game, raise your arms with your elbows at ninety degrees")
-    print "if you want to start the game, raise your arms with your elbows at ninety degrees\n"
+   print "if you want to start the game, raise your arms with your elbows at ninety degrees\n"
     #print "I finished intro method"
- 
+   current = datetime.now()
+   secondsNow = current.second + current.minute*60
+   difference = 0
+   print "about to go into time out while"
+   while(difference < 8):
+   	then = datetime.now()
+        secondsThen = then.second + then.minute*60
+        difference = secondsThen - secondsNow
+
 
 #convert gestures to words
 def toSay(simonBool, row, col): 
     List1 = [["Jump", "Wave Right Hand", "Wave Left Hand", "Wave Both Hands", "Face Left"],
     	["Right Step", "Left Step", "Step Forward", "Step Back", "Face Right"],
     	["Pat Head With Right Hand", "Pat Head With Left Hand", "Touch Right Elbow", "Touch Left Elbow", "Touch Both Elbows"],
-    	["Touch Right Knee", "Touch Left Knee", "Touch Both Knees", "Touch Opposite Knees", "Clap Hands"],
+    	["Touch Right Knee", "Touch Left Knee", "Touch Both Knees", "Touch Both Knees", "Clap Hands"],
     	["Raise Right Hand", "Raise Left Hand", "Raise Both Hands", "Hands On Hips", "Touch Shoulders"],
-   	["Stand On Right Foot", "Stand on Left Foot", "Right Hand Over Chest", "Left Hand Over Chest", "Face Up"]]
+   	["Lift Right Leg", "Lift Left Leg", "Right Hand Over Stomach", "Left Hand Over Stomach", "Hands On Stomach"]]
 
     gameCommand = ""
     if (simonBool == 1):
@@ -69,7 +82,7 @@ def toSay(simonBool, row, col):
 
     gameCommand += List1[row][col]
     print (gameCommand) 
-  #  pub.publish(gameCommand)
+    pub.publish(gameCommand)
   
 def inArray(array, currentGesture):
   for x in array:
@@ -82,6 +95,12 @@ def inArray(array, currentGesture):
 
 
 if __name__ == '__main__':
+
+  try:
+	talker()
+  except rospy.ROSInterruptException:
+	pass
+	
   prevNum = -2;
     #print "Requesting %s"%(gesture)
     #start game loop
@@ -106,27 +125,27 @@ if __name__ == '__main__':
     	print "Im in while statement"
 		#print "currentGesture[0]"
 		#we're commenting out the randomizing of the simons says for now        
-        #simonBool = randint(0,1)
-   	simonBool = 1
-	currentGesture[0] = 3;
-	currentGesture[1] = 3;
-	alreadyDone[3][3] = True;
+        simonBool = randint(0,1)
+   	#simonBool = 1
+	#currentGesture[0] = 5;
+	#currentGesture[1] = 2;
+	#alreadyDone[5][2] = True;
       #add prevnum comparison somewhere else i guess
 
-    	if (alreadyDone[currentGesture[0]][currentGesture[1]] == True):
-		#alreadyDone[currentGesture[0]][currentGesture[1]] = True
+    	if (alreadyDone[currentGesture[0]][currentGesture[1]] == False):
+		alreadyDone[currentGesture[0]][currentGesture[1]] = True
       		print "about to start detecting a gestures" 
       		toSay(simonBool, currentGesture[0], currentGesture[1])
             #print (currentGesture)
-      		#simonsays(currentGesture[0], currentGesture[1], 1)
-		simonsays(3, 3, 1)
+      		simonsays(currentGesture[0], currentGesture[1], 1)
+		#simonsays(5, 2, 1)
             #print "this is if it was detected: "
             #print (detected)
       		current = datetime.now()
       		secondsNow = current.second + current.minute*60
       		difference = 0
       		print "about to go into time out while"
-		while(difference < 5):
+		while(difference < 8):
         		then = datetime.now()
         		secondsThen = then.second + then.minute*60
         		difference = secondsThen - secondsNow
@@ -147,12 +166,7 @@ if __name__ == '__main__':
   	simonsays(0, 0, 3)
   if(lost):
   	print "You lost the game."
-      #  pub.publish("you lost the game. goodbye")
+      	pub.publish("you lost the game. goodbye")
   else:
     	print "You won the game"
-       # pub.publish("you won simon says!")
-    #generate gesture
-    
-    #get response
-    #caculate points if end
-    #listener()
+        pub.publish("you won simon says!")

@@ -117,7 +117,7 @@ int main(int argc, char** argv){
   //add method here
   std::string arrayOfGestures[6][5] = {{"jump", "waveRH", "waveLH", "waveBH", "faceL"}, 
           {"stepR", "stepL", "stepF", "stepB", "faceR"},
-          {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"},
+          {"patHeadRH", "patHeadLH", "touchRE", "touchLE", "raiseBH"},
           {"touchRK", "touchLK", "touchBK", "touchOK", "clapHands"},
           {"raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"},
           {"standOnRF", "standOnLF", "RHoverChest", "LHoverChest", "faceUp"}};
@@ -564,11 +564,9 @@ bool methodC(int randomGes, tf::StampedTransform transform_head, tf::StampedTran
         }
       }
       break;
-    case 4: //touch both elbows
-      if((fabs(transform_LH.getOrigin().z()-transform_RE.getOrigin().z()) < .15 == 1) && (fabs(transform_RH.getOrigin().z()-transform_LE.getOrigin().z()) < .15 == 1)){
-        if((fabs(transform_LH.getOrigin().y()-transform_RE.getOrigin().y()) < .15 == 1) && (fabs(transform_RH.getOrigin().y()-transform_LE.getOrigin().y()) < .15 == 1)){
-          return true;
-        }
+    case 4: //raise both hands
+       if((transform_LH.getOrigin().z()>transform_head.getOrigin().z() == 1) && (transform_RH.getOrigin().z()>transform_head.getOrigin().z() == 1)){
+        return true;
       }
       break;
   }

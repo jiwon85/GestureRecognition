@@ -1,0 +1,8 @@
+<launch>
+  <include file="$(find openni_launch)/launch/openni.launch"/>
+  <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+  <node name="listener" pkg="BWI-robot-speech" type="listener.py"/>
+  <node name="skeleton_listener" pkg="skeleton_markers" type="skeleton_listener.cpp"/>
+  <node name="openni_tracker" pkg="openni_tracker" type="openni_tracker.cpp"/>
+</launch>
+

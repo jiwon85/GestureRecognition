@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers
+CMAKE_SOURCE_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build
 
 # Utility rule file for ROSBUILD_gensrv_py.
 
@@ -45,57 +45,76 @@ include CMakeFiles/ROSBUILD_gensrv_py.dir/progress.make
 CMakeFiles/ROSBUILD_gensrv_py: ../src/skeleton_markers/srv/__init__.py
 
 ../src/skeleton_markers/srv/__init__.py: ../src/skeleton_markers/srv/_skeleton_listener_service.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/skeleton_markers/srv/__init__.py"
-	/opt/ros/groovy/share/rospy/rosbuild/scripts/gensrv_py.py --initpy /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv
+	/opt/ros/hydro/share/rospy/rosbuild/scripts/gensrv_py.py --initpy /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv
 
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: ../srv/skeleton_listener_service.srv
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/gensrv_py.py
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/roslib/cmake/../../../lib/roslib/gendeps
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rospy/rosbuild/scripts/gensrv_py.py
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roslib/cmake/../../../lib/roslib/gendeps
 ../src/skeleton_markers/srv/_skeleton_listener_service.py: ../manifest.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/genmsg/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/genpy/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rosgraph/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/cpp_common/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rostime/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/roscpp_traits/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/message_runtime/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/std_msgs/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/catkin/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rospack/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/roslib/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rospy/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rosconsole/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/xmlrpcpp/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/roscpp/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/geometry_msgs/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/visualization_msgs/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/sensor_msgs/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/camera_calibration_parsers/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/message_filters/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/console_bridge/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/class_loader/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/pluginlib/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/image_transport/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/camera_info_manager/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/topic_tools/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rosbag/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rosmsg/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/rosservice/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/dynamic_reconfigure/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/bond/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/smclib/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/bondcpp/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/nodelet/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/openni_camera/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/orocos_kdl/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/groovy/share/tf/package.xml
-../src/skeleton_markers/srv/_skeleton_listener_service.py: /home/fri/ros/catkin_ws/src/openni_tracker/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_2)
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/genmsg/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/genpy/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosgraph/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/cpp_common/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rostime/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roscpp_traits/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roscpp_serialization/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/message_runtime/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/std_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosgraph_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/catkin/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rospack/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roslib/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rospy/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosconsole/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/xmlrpcpp/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roscpp/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/geometry_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/visualization_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/sensor_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/camera_calibration_parsers/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/message_filters/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/console_bridge/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/class_loader/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/pluginlib/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/image_transport/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/camera_info_manager/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/topic_tools/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosbag/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosmsg/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosservice/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/dynamic_reconfigure/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/bond/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/smclib/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/bondcpp/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/nodelet/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/openni_camera/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/orocos_kdl/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosclean/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosmaster/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosout/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosparam/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roslaunch/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rostopic/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosnode/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/roswtf/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/gencpp/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/genlisp/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/message_generation/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/actionlib_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/tf2_msgs/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/tf2/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rosunit/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/rostest/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/actionlib/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/tf2_py/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/tf2_ros/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/tf/package.xml
+../src/skeleton_markers/srv/_skeleton_listener_service.py: /opt/ros/hydro/share/openni_tracker/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/skeleton_markers/srv/_skeleton_listener_service.py"
-	/opt/ros/groovy/share/rospy/rosbuild/scripts/gensrv_py.py --noinitpy /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv
+	/opt/ros/hydro/share/rospy/rosbuild/scripts/gensrv_py.py --noinitpy /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv
 
 ROSBUILD_gensrv_py: CMakeFiles/ROSBUILD_gensrv_py
 ROSBUILD_gensrv_py: ../src/skeleton_markers/srv/__init__.py
@@ -112,6 +131,6 @@ CMakeFiles/ROSBUILD_gensrv_py.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/clean
 
 CMakeFiles/ROSBUILD_gensrv_py.dir/depend:
-	cd /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build /home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles/ROSBUILD_gensrv_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles/ROSBUILD_gensrv_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_gensrv_py.dir/depend
 

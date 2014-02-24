@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp" "/home/fri/ros/rosbuild_ws/GestureRecognition/skeleton_markers/build/CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o"
+  "/home/fri/gestureRecognition/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp" "/home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

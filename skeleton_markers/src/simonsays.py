@@ -15,7 +15,7 @@ pub = None
 def talker():
 	global pub
 	pub = rospy.Publisher('audio_say', String)
-	rospy.init_node('talker')  
+	rospy.init_node('talker')
 
 def simonsays(randomArrNum, randomGesNum, wantedState):
     rospy.wait_for_service('skeletonlistener')
@@ -30,7 +30,7 @@ def simonsays(randomArrNum, randomGesNum, wantedState):
 def randomGenerator():
 	A = [["jump", "waveRH", "waveLH", "waveBH", "faceL"],
 		["stepR", "stepL", "stepF", "stepB", "faceR"],
-		["patHeadRH", "patHeadLH", "touchRE", "touchLE", "touchBE"],
+		["patHeadRH", "patHeadLH", "touchRE", "touchLE", "raiseBH"],
 		["touchRK", "touchLK", "touchBK", "touchBK", "clapHands"],
 		["raiseRH", "raiseLH", "raiseBH", "handsOnHips", "touchShoulders"],
 		["liftRL", "liftLL", "RHoverStomach", "LHoverStomach", "bothHandsOverStomach"]]
@@ -40,8 +40,8 @@ def randomGenerator():
 	arrayOfIndexes[1] = randint(0,4)
 	#print (randomGestureNum)
     	#randomGesture = A[randomArrNum][randomGestureNum]
-    
-  	return arrayOfIndexes  
+
+  	return arrayOfIndexes
 
 
 
@@ -68,10 +68,10 @@ def intro():
 
 
 #convert gestures to words
-def toSay(simonBool, row, col): 
+def toSay(simonBool, row, col):
     List1 = [["Jump", "Wave Right Hand", "Wave Left Hand", "Wave Both Hands", "Face Left"],
     	["Right Step", "Left Step", "Step Forward", "Step Back", "Face Right"],
-    	["Pat Head With Right Hand", "Pat Head With Left Hand", "Touch Right Elbow", "Touch Left Elbow", "Touch Both Elbows"],
+    	["Pat Head With Right Hand", "Pat Head With Left Hand", "Touch Right Elbow", "Touch Left Elbow", "Raise Both Hands"],
     	["Touch Right Knee", "Touch Left Knee", "Touch Both Knees", "Touch Both Knees", "Clap Hands"],
     	["Raise Right Hand", "Raise Left Hand", "Raise Both Hands", "Hands On Hips", "Touch Shoulders"],
    	["Lift Right Leg", "Lift Left Leg", "Right Hand Over Stomach", "Left Hand Over Stomach", "Hands On Stomach"]]
@@ -81,9 +81,9 @@ def toSay(simonBool, row, col):
         gameCommand+= "simon says "
 
     gameCommand += List1[row][col]
-    print (gameCommand) 
+    print (gameCommand)
     pub.publish(gameCommand)
-  
+
 def inArray(array, currentGesture):
   for x in array:
   	if x == currentGesture:
@@ -100,56 +100,45 @@ if __name__ == '__main__':
 	talker()
   except rospy.ROSInterruptException:
 	pass
-	
-  prevNum = -2;
+
+  prevNum = -2
     #print "Requesting %s"%(gesture)
     #start game loop
     #score = 0;
   intro()
-  lost = False;
-  loopCount = 0;
-   
+  lost = False
+  loopCount = 0
+
   alreadyDone = [[False, False, False, False, False],
     [False, False, False, False, False],
     [False, False, False, False, False],
     [False, False, False, False, False],
-    [False, False, False, False, False],
+    [False, False, False, True, False],
     [False, False, False, False, False]]
     #print "Im about to start the WHILE STATEMETN"
-    
+
   currentGesture = randomGenerator()
-    
+
   while(loopCount<10 and not lost):
    	print "row "+ str(currentGesture[0])
     	print "col "+ str(currentGesture[1])
     	print "Im in while statement"
-		#print "currentGesture[0]"
-		#we're commenting out the randomizing of the simons says for now        
         simonBool = randint(0,1)
-   	#simonBool = 1
-	#currentGesture[0] = 5;
-	#currentGesture[1] = 2;
-	#alreadyDone[5][2] = True;
-      #add prevnum comparison somewhere else i guess
 
     	if (alreadyDone[currentGesture[0]][currentGesture[1]] == False):
 		alreadyDone[currentGesture[0]][currentGesture[1]] = True
-      		print "about to start detecting a gestures" 
+      		print "about to start detecting a gestures"
       		toSay(simonBool, currentGesture[0], currentGesture[1])
-            #print (currentGesture)
       		simonsays(currentGesture[0], currentGesture[1], 1)
-		#simonsays(5, 2, 1)
-            #print "this is if it was detected: "
-            #print (detected)
       		current = datetime.now()
       		secondsNow = current.second + current.minute*60
       		difference = 0
       		print "about to go into time out while"
-		while(difference < 8):
+		while(difference < 6):
         		then = datetime.now()
         		secondsThen = then.second + then.minute*60
         		difference = secondsThen - secondsNow
-		print "out of while loop" 
+		print "out of while loop"
       		detected = simonsays(currentGesture[0], currentGesture[1], 2)
       		print "back from service"
 		if(detected):

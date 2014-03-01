@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers
+CMAKE_SOURCE_DIR = /home/fri/ros/GestureRecognition/skeleton_markers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/fri/ros/GestureRecognition/skeleton_markers/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/skeleton_listener.dir/depend.make
@@ -51,31 +51,36 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: ../src/skeleton_li
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: ../manifest.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/genmsg/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/genpy/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosgraph/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/catkin/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/console_bridge/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/cpp_common/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rostime/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/roscpp_traits/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/roscpp_serialization/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/message_runtime/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/gencpp/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/genlisp/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/message_generation/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosbuild/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosconsole/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/std_msgs/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosgraph_msgs/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/catkin/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/xmlrpcpp/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/roscpp/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosgraph/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rospack/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/roslib/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rospy/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosconsole/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/xmlrpcpp/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/roscpp/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/geometry_msgs/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/visualization_msgs/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/sensor_msgs/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/camera_calibration_parsers/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/message_filters/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/console_bridge/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/class_loader/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/pluginlib/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/image_transport/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/camera_info_manager/package.xml
+CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosbag_storage/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/topic_tools/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosbag/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosmsg/package.xml
@@ -95,9 +100,6 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/sha
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rostopic/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/rosnode/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/roswtf/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/gencpp/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/genlisp/package.xml
-CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/message_generation/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/actionlib_msgs/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/tf2_msgs/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/tf2/package.xml
@@ -108,17 +110,17 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/sha
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/tf2_ros/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/tf/package.xml
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o: /opt/ros/hydro/share/openni_tracker/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o -c /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o -c /home/fri/ros/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp > CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -E /home/fri/ros/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp > CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.i
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -W -Wall -Wno-unused-parameter -fno-strict-aliasing -pthread -S /home/fri/ros/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp -o CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.s
 
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o.requires:
 .PHONY : CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o.requires
@@ -154,6 +156,6 @@ CMakeFiles/skeleton_listener.dir/clean:
 .PHONY : CMakeFiles/skeleton_listener.dir/clean
 
 CMakeFiles/skeleton_listener.dir/depend:
-	cd /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles/skeleton_listener.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fri/ros/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/GestureRecognition/skeleton_markers /home/fri/ros/GestureRecognition/skeleton_markers /home/fri/ros/GestureRecognition/skeleton_markers/build /home/fri/ros/GestureRecognition/skeleton_markers/build /home/fri/ros/GestureRecognition/skeleton_markers/build/CMakeFiles/skeleton_listener.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/skeleton_listener.dir/depend
 

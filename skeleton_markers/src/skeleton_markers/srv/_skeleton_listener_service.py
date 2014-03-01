@@ -59,8 +59,8 @@ int64 state
     try:
       _x = self
       buff.write(_struct_3q.pack(_x.randomArr, _x.randomGes, _x.state))
-    except struct.error as se: self._check_types(se)
-    except TypeError as te: self._check_types(te)
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize(self, str):
     """
@@ -87,8 +87,8 @@ int64 state
     try:
       _x = self
       buff.write(_struct_3q.pack(_x.randomArr, _x.randomGes, _x.state))
-    except struct.error as se: self._check_types(se)
-    except TypeError as te: self._check_types(te)
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize_numpy(self, str, numpy):
     """
@@ -166,8 +166,8 @@ bool success
     try:
       _x = self
       buff.write(_struct_2B.pack(_x.flag, _x.success))
-    except struct.error as se: self._check_types(se)
-    except TypeError as te: self._check_types(te)
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize(self, str):
     """
@@ -196,8 +196,8 @@ bool success
     try:
       _x = self
       buff.write(_struct_2B.pack(_x.flag, _x.success))
-    except struct.error as se: self._check_types(se)
-    except TypeError as te: self._check_types(te)
+    except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
+    except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
   def deserialize_numpy(self, str, numpy):
     """

@@ -3,14 +3,14 @@
 
 # Relative path conversion top directories.
 SET(CMAKE_RELATIVE_PATH_TOP_SOURCE "/usr/src/gtest")
-SET(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build")
+SET(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/fri/ros/GestureRecognition/skeleton_markers/build")
 
 # Force unix paths in dependencies.
 SET(CMAKE_FORCE_UNIX_PATHS 1)
 
 # The C and CXX include file search paths:
 SET(CMAKE_C_INCLUDE_PATH
-  "/home/fri/gestureRecognition/GestureRecognition/skeleton_markers/include"
+  "/home/fri/ros/GestureRecognition/skeleton_markers/include"
   "/opt/ros/hydro/include"
   "/usr/include/ni"
   "/usr/src/gtest/include"

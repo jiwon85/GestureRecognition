@@ -71,9 +71,9 @@ def intro():
 def toSay(simonBool, row, col):
     List1 = [["Jump", "Wave Right Hand", "Wave Left Hand", "Wave Both Hands", "Face Left"],
     	["Right Step", "Left Step", "Step Forward", "Step Back", "Face Right"],
-    	["Pat Head With Right Hand", "Pat Head With Left Hand", "Touch Right Elbow", "Touch Left Elbow", "Raise Both Hands"],
-    	["Touch Right Knee", "Touch Left Knee", "Touch Both Knees", "Touch Both Knees", "Clap Hands"],
-    	["Raise Right Hand", "Raise Left Hand", "Raise Both Hands", "Hands On Hips", "Touch Shoulders"],
+    	["Pat Head With Right Hand", "Pat Head With Left Hand", "Touch Right Elbow", "Touch Left Elbow", "Hands on Stomach"],
+    	["Lift Right Knee", "Lift Left Knee", "Hands on Head", "Hands on Head", "Clap Hands"],
+    	["Raise Right Hand", "Raise Left Hand", "Raise Both Hands", "Hands On Hips", "Raise Both Hands"],
    	["Lift Right Leg", "Lift Left Leg", "Right Hand Over Stomach", "Left Hand Over Stomach", "Hands On Stomach"]]
 
     gameCommand = ""
@@ -115,26 +115,33 @@ if __name__ == '__main__':
     [False, False, False, False, False],
     [False, False, False, True, False],
     [False, False, False, False, False]]
-    #print "Im about to start the WHILE STATEMETN"
+    #print "Im about to start the WHILE STATEMENT"
 
   currentGesture = randomGenerator()
-
+  currentArr = -1
   while(loopCount<10 and not lost):
    	print "row "+ str(currentGesture[0])
     	print "col "+ str(currentGesture[1])
     	print "Im in while statement"
         simonBool = randint(0,1)
-
-    	if (alreadyDone[currentGesture[0]][currentGesture[1]] == False):
+	
+    	if (alreadyDone[currentGesture[0]][currentGesture[1]] == False and currentArr!=currentGesture[0]):
 		alreadyDone[currentGesture[0]][currentGesture[1]] = True
       		print "about to start detecting a gestures"
       		toSay(simonBool, currentGesture[0], currentGesture[1])
+		present = datetime.now()
+		waitime = 0
+		seconds1 = present.second + present.minute*60
+		while(waitime<3):
+			then1 = datetime.now()
+			seconds2 = then1.second + then1.minute*60
+			waitime = seconds2 - seconds1
       		simonsays(currentGesture[0], currentGesture[1], 1)
       		current = datetime.now()
       		secondsNow = current.second + current.minute*60
       		difference = 0
       		print "about to go into time out while"
-		while(difference < 6):
+		while(difference < 5):
         		then = datetime.now()
         		secondsThen = then.second + then.minute*60
         		difference = secondsThen - secondsNow
@@ -150,8 +157,10 @@ if __name__ == '__main__':
       		elif(not detected and simonBool == 1):
         		lost = True
       		loopCount+=1
+		currentArr = currentGesture[0]
     	else:
       		currentGesture = randomGenerator()
+
   	simonsays(0, 0, 3)
   if(lost):
   	print "You lost the game."

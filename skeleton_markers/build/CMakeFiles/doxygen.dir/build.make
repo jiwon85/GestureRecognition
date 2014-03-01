@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers
+CMAKE_SOURCE_DIR = /home/fri/ros/GestureRecognition/skeleton_markers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/fri/ros/GestureRecognition/skeleton_markers/build
 
 # Utility rule file for doxygen.
 
@@ -43,7 +43,7 @@ CMAKE_BINARY_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_mark
 include CMakeFiles/doxygen.dir/progress.make
 
 CMakeFiles/doxygen:
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "doxygen found"
 
 doxygen: CMakeFiles/doxygen
@@ -59,6 +59,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fri/ros/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/GestureRecognition/skeleton_markers /home/fri/ros/GestureRecognition/skeleton_markers /home/fri/ros/GestureRecognition/skeleton_markers/build /home/fri/ros/GestureRecognition/skeleton_markers/build /home/fri/ros/GestureRecognition/skeleton_markers/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

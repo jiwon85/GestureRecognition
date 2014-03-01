@@ -4,7 +4,7 @@
 CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o
  ../msg_gen/cpp/include/skeleton_markers/Skeleton.h
  ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h
- /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp
+ /home/fri/ros/GestureRecognition/skeleton_markers/src/skeleton_listener.cpp
  /opt/ros/hydro/include/XmlRpcDecl.h
  /opt/ros/hydro/include/XmlRpcValue.h
  /opt/ros/hydro/include/geometry_msgs/Point.h
@@ -28,6 +28,8 @@ CMakeFiles/skeleton_listener.dir/src/skeleton_listener.cpp.o
  /opt/ros/hydro/include/ros/callback_queue_interface.h
  /opt/ros/hydro/include/ros/common.h
  /opt/ros/hydro/include/ros/console.h
+ /opt/ros/hydro/include/ros/console_backend.h
+ /opt/ros/hydro/include/ros/datatypes.h
  /opt/ros/hydro/include/ros/duration.h
  /opt/ros/hydro/include/ros/exception.h
  /opt/ros/hydro/include/ros/exceptions.h

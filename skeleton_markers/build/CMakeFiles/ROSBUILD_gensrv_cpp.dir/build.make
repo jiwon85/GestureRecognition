@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers
+CMAKE_SOURCE_DIR = /home/fri/ros/GestureRecognition/skeleton_markers
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build
+CMAKE_BINARY_DIR = /home/fri/ros/GestureRecognition/skeleton_markers/build
 
 # Utility rule file for ROSBUILD_gensrv_cpp.
 
@@ -51,31 +51,36 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/skeleton_markers/skeleton
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: ../manifest.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/genmsg/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/genpy/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosgraph/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/catkin/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/console_bridge/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/cpp_common/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rostime/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/roscpp_traits/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/roscpp_serialization/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/message_runtime/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/gencpp/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/genlisp/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/message_generation/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosbuild/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosconsole/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/std_msgs/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosgraph_msgs/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/catkin/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/xmlrpcpp/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/roscpp/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosgraph/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rospack/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/roslib/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rospy/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosconsole/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/xmlrpcpp/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/roscpp/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/geometry_msgs/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/visualization_msgs/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/sensor_msgs/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/camera_calibration_parsers/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/message_filters/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/console_bridge/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/class_loader/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/pluginlib/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/image_transport/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/camera_info_manager/package.xml
+../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosbag_storage/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/topic_tools/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosbag/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosmsg/package.xml
@@ -95,9 +100,6 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/skeleton_markers/skeleton
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rostopic/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/rosnode/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/roswtf/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/gencpp/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/genlisp/package.xml
-../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/message_generation/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/actionlib_msgs/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/tf2_msgs/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/tf2/package.xml
@@ -108,9 +110,9 @@ CMakeFiles/ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/skeleton_markers/skeleton
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/tf2_ros/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/tf/package.xml
 ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h: /opt/ros/hydro/share/openni_tracker/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fri/ros/GestureRecognition/skeleton_markers/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h"
-	/opt/ros/hydro/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv
+	/opt/ros/hydro/share/roscpp/rosbuild/scripts/gensrv_cpp.py /home/fri/ros/GestureRecognition/skeleton_markers/srv/skeleton_listener_service.srv
 
 ROSBUILD_gensrv_cpp: CMakeFiles/ROSBUILD_gensrv_cpp
 ROSBUILD_gensrv_cpp: ../srv_gen/cpp/include/skeleton_markers/skeleton_listener_service.h
@@ -126,6 +128,6 @@ CMakeFiles/ROSBUILD_gensrv_cpp.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/clean
 
 CMakeFiles/ROSBUILD_gensrv_cpp.dir/depend:
-	cd /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fri/ros/GestureRecognition/skeleton_markers/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fri/ros/GestureRecognition/skeleton_markers /home/fri/ros/GestureRecognition/skeleton_markers /home/fri/ros/GestureRecognition/skeleton_markers/build /home/fri/ros/GestureRecognition/skeleton_markers/build /home/fri/ros/GestureRecognition/skeleton_markers/build/CMakeFiles/ROSBUILD_gensrv_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_gensrv_cpp.dir/depend
 

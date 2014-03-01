@@ -1,2 +1,2 @@
 - setup-file:
-    local-name: /home/fri/gestureRecognition/GestureRecognition/skeleton_markers/build/devel/setup.sh
+    local-name: /home/fri/ros/GestureRecognition/skeleton_markers/build/devel/setup.sh

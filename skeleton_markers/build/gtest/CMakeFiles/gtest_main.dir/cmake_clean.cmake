@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
-  "/home/fri/gestureRecognition/GestureRecognition/skeleton_markers/lib/libgtest_main.pdb"
-  "/home/fri/gestureRecognition/GestureRecognition/skeleton_markers/lib/libgtest_main.so"
+  "/home/fri/ros/GestureRecognition/skeleton_markers/lib/libgtest_main.pdb"
+  "/home/fri/ros/GestureRecognition/skeleton_markers/lib/libgtest_main.so"
 )
 
 # Per-language clean rules from dependency scanning.
